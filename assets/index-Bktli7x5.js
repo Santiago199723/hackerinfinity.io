@@ -17875,53 +17875,83 @@ const Zu = [{
     flag1: "🇺🇸",
     flag2: "🇲🇽"
 }, {
+    symbol: "USD/ZAR OTC",
+    name: "US Dollar/South African Rand OTC",
+    category: "FOREX_OTC",
+    flag1: "🇺🇸",
+    flag2: "🇿🇦"
+}, {
+    symbol: "CHF/NOK OTC",
+    name: "Swiss Franc/Norwegian Krone OTC",
+    category: "FOREX_OTC",
+    flag1: "🇨🇭",
+    flag2: "🇳🇴"
+}, {
+    symbol: "USD/DKK OTC",
+    name: "US Dollar/Danish Krone OTC",
+    category: "FOREX_OTC",
+    flag1: "🇺🇸",
+    flag2: "🇩🇰"
+}, {
+    symbol: "EUR/ZAR OTC",
+    name: "Euro/South African Rand OTC",
+    category: "FOREX_OTC",
+    flag1: "🇪🇺",
+    flag2: "🇿🇦"
+}, {
+    symbol: "NOK/JPY OTC",
+    name: "Norwegian Krone/Japanese Yen OTC",
+    category: "FOREX_OTC",
+    flag1: "🇳🇴",
+    flag2: "🇯🇵"
+}, {
     symbol: "Cripto/IDX OTC",
     name: "US Dollar/Mexican Peso OTC",
     category: "FOREX_OTC",
-    flag1: "🇺🇸",
-    flag2: "🇲🇽"
+    flag1: "🇨🇷",
+    flag2: "🇮🇩"
 }, {
     symbol: "BTC/USD",
     name: "Bitcoin/US Dollar",
     category: "CRYPTO",
-    icon: dj
+    icon: "dj"
 }, {
     symbol: "ETH/USD",
     name: "Ethereum/US Dollar",
     category: "CRYPTO",
-    icon: Lj
+    icon: "Lj"
 }, {
     symbol: "BNB/USD",
     name: "Binance Coin/US Dollar",
     category: "CRYPTO",
-    icon: Ws
+    icon: "Ws"
 }, {
     symbol: "XRP/USD",
     name: "Ripple/US Dollar",
     category: "CRYPTO",
-    icon: Ws
+    icon: "Ws"
 }, {
     symbol: "Cripto/IDX OTC",
     name: "Cripto/IDX",
     category: "CRYPTO",
-    icon: Ws
-}, {symbol: "Altcoin/IDX OTC",
+    icon: "Ws"
+}, {
+    symbol: "Altcoin/IDX OTC",
     name: "Altcoin/IDX",
     category: "CRYPTO",
-    icon: Ws
+    icon: "Ws"
 }, {
     symbol: "ADA/USD",
     name: "Cardano/US Dollar",
     category: "CRYPTO",
-    icon: Ws
+    icon: "Ws"
 }, {
-    
-    
     symbol: "SOL/USD",
     name: "Solana/US Dollar",
     category: "CRYPTO",
-    icon: Ws
+    icon: "Ws"
 }]
+
     , vs = () => {
         const e = rr()
             , { t } = ue()
