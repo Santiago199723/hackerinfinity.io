@@ -17791,6 +17791,54 @@ const Zu = [{
     flag1: "🇵🇪",
     flag2: "🇺🇸"
 }, {
+    symbol: "GBP/CHF",
+    name: "British Pound/Swiss Franc",
+    category: "FOREX",
+    flag1: "🇬🇧",
+    flag2: "🇨🇭"
+}, {
+    symbol: "GBP/JPY",
+    name: "British Pound/Japanese Yen",
+    category: "FOREX",
+    flag1: "🇬🇧",
+    flag2: "🇯🇵"
+}, {
+    symbol: "USD/CAD",
+    name: "US Dollar/Canadian Dollar",
+    category: "FOREX",
+    flag1: "🇺🇸",
+    flag2: "🇨🇦"
+}, {
+    symbol: "USD/CHF",
+    name: "US Dollar/Swiss Franc",
+    category: "FOREX",
+    flag1: "🇺🇸",
+    flag2: "🇨🇭"
+}, {
+    symbol: "USD/JPY",
+    name: "US Dollar/Japanese Yen",
+    category: "FOREX",
+    flag1: "🇺🇸",
+    flag2: "🇯🇵"
+}, {
+    symbol: "GBP/USD",
+    name: "British Pound/US Dollar",
+    category: "FOREX",
+    flag1: "🇬🇧",
+    flag2: "🇺🇸"
+}, {
+    symbol: "AUD/USD",
+    name: "Australian Dollar/US Dollar",
+    category: "FOREX",
+    flag1: "🇦🇺",
+    flag2: "🇺🇸"
+}, {
+    symbol: "ZND/USD",
+    name: "New Zealand Dollar/US Dollar",
+    category: "FOREX",
+    flag1: "🇳🇿",
+    flag2: "🇺🇸"
+}, {
     symbol: "EUR/USD OTC",
     name: "Euro/US Dollar OTC",
     category: "FOREX_OTC",
@@ -17827,6 +17875,12 @@ const Zu = [{
     flag1: "🇺🇸",
     flag2: "🇲🇽"
 }, {
+    symbol: "Cripto/IDX OTC",
+    name: "US Dollar/Mexican Peso OTC",
+    category: "FOREX_OTC",
+    flag1: "🇺🇸",
+    flag2: "🇲🇽"
+}, {
     symbol: "BTC/USD",
     name: "Bitcoin/US Dollar",
     category: "CRYPTO",
@@ -17847,11 +17901,22 @@ const Zu = [{
     category: "CRYPTO",
     icon: Ws
 }, {
+    symbol: "Cripto/IDX OTC",
+    name: "Cripto/IDX",
+    category: "CRYPTO",
+    icon: Ws
+}, {symbol: "Altcoin/IDX OTC",
+    name: "Altcoin/IDX",
+    category: "CRYPTO",
+    icon: Ws
+}, {
     symbol: "ADA/USD",
     name: "Cardano/US Dollar",
     category: "CRYPTO",
     icon: Ws
 }, {
+    
+    
     symbol: "SOL/USD",
     name: "Solana/US Dollar",
     category: "CRYPTO",
