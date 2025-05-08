@@ -18207,7 +18207,7 @@ const Zu = [{
                                         children: t("verify")
                                     })
                                 }), a.jsxs("a", {
-                                    href: "",
+                                    href: "https://trade.avalonbroker.com/register?aff=755542&aff_model=revenue&afftrack=",
                                     target: "_blank",
                                     rel: "noopener noreferrer",
                                     className: "flex-1 bg-[#1A1C24] hover:bg-[#252935] text-gray-300 px-4 py-2.5 rounded-lg flex items-center justify-center gap-2 transition-colors",
@@ -18215,6 +18215,7 @@ const Zu = [{
                                         children: t("createBrokerAccount")
                                     }), a.jsx(W0, {
                                         className: "w-4 h-4"
+                                    
                                     })]
                                 })]
                             })]
@@ -18224,6 +18225,9 @@ const Zu = [{
             })]
         })
     }
+
+
+    
     , xs = () => {
         const { isConnected: e } = gs()
             , { language: t, setLanguage: n, t: r } = ue()
