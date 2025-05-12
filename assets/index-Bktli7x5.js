@@ -18207,7 +18207,7 @@ const Zu = [{
                                         children: t("verify")
                                     })
                                 }), a.jsxs("a", {
-                                    href: "https://trade.avalonbroker.com/register?aff=755542&aff_model=revenue&afftrack=",
+                                    href: "https://traderoom.alphabinari.io/?code=48SQYMR3UD",
                                     target: "_blank",
                                     rel: "noopener noreferrer",
                                     className: "flex-1 bg-[#1A1C24] hover:bg-[#252935] text-gray-300 px-4 py-2.5 rounded-lg flex items-center justify-center gap-2 transition-colors",
