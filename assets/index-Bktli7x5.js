@@ -18684,7 +18684,7 @@ function Hj({ asset: e, onAssetSelect: t, onAnalyze: n }) {
     const [showMenu, setShowMenu] = x.useState(false);
     const [selectedBroker, setSelectedBroker] = x.useState(null);
 
-    const corretoras = ["Alpha Binari", "Casa Trader", "Olymptrader", "Iq Option", "Exnova", "Bullex", "Ebinex", "Avalon"];
+    const corretoras = ["Polarium", "Casa Trader", "Olymptrader", "Iq Option", "Exnova", "Bullex", "Ebinex", "Avalon"];
 
     return a.jsx("div", {
         className: "flex-1 flex flex-col",
