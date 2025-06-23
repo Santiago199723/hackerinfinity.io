@@ -18678,82 +18678,6 @@ function $j({ onClick: e, disabled: t }) {
     })
 }
 
-<!-- Botão de Timeframe -->
-<div style="position: relative; display: inline-block;">
-  <button id="btn-timeframe" onclick="toggleTimeframeMenu()" style="
-    background-color: #0066cc;
-    color: white;
-    padding: 8px 16px;
-    font-size: 14px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  ">
-    <i class="fa fa-clock-o" style="font-size: 20px;"></i>
-    <span id="selected-timeframe">Escolha o Timeframe</span>
-  </button>
-
-  <div id="menu-timeframe" style="
-    display: none;
-    position: absolute;
-    background-color: #f0f0f0;
-    width: 180px;
-    box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
-    z-index: 1000;
-    border-radius: 5px;
-    margin-top: 5px;
-    overflow: hidden;
-  ">
-    <a href="#" onclick="selectTimeframe('M1')" style="display: block; padding: 12px 16px; text-decoration: none; color: black; font-size: 14px; text-align: center; border-bottom: 1px solid #ddd; transition: all 0.3s ease;" onmouseover="highlight(this)" onmouseout="unhighlight(this)">M1</a>
-    <a href="#" onclick="selectTimeframe('M5')" style="display: block; padding: 12px 16px; text-decoration: none; color: black; font-size: 14px; text-align: center; border-bottom: 1px solid #ddd; transition: all 0.3s ease;" onmouseover="highlight(this)" onmouseout="unhighlight(this)">M5</a>
-    <a href="#" onclick="selectTimeframe('5se')" style="display: block; padding: 12px 16px; text-decoration: none; color: black; font-size: 14px; text-align: center; transition: all 0.3s ease;" onmouseover="highlight(this)" onmouseout="unhighlight(this)">5se</a>
-  </div>
-</div>
-
-<!-- Texto exibido após seleção -->
-<div id="timeframe-info" style="margin-top: 12px; font-size: 16px; font-weight: bold; color: #333;"></div>
-
-<script>
-  function toggleTimeframeMenu() {
-    const menu = document.getElementById("menu-timeframe");
-    menu.style.display = menu.style.display === "block" ? "none" : "block";
-  }
-
-  function selectTimeframe(tf) {
-    document.getElementById("selected-timeframe").textContent = `Timeframe para ${tf}`;
-    document.getElementById("menu-timeframe").style.display = "none";
-    document.getElementById("timeframe-info").textContent = `Timeframe para ${tf}`;
-  }
-
-  function highlight(element) {
-    element.style.backgroundColor = "#0066cc";
-    element.style.color = "white";
-    element.style.transform = "scale(1.05)";
-  }
-
-  function unhighlight(element) {
-    element.style.backgroundColor = "transparent";
-    element.style.color = "black";
-    element.style.transform = "scale(1)";
-  }
-
-  // Fecha o menu se clicar fora
-  window.addEventListener("click", function(e) {
-    const btn = document.getElementById("btn-timeframe");
-    const menu = document.getElementById("menu-timeframe");
-    if (!btn.contains(e.target) && !menu.contains(e.target)) {
-      menu.style.display = "none";
-    }
-  });
-</script>
-
-
-
-
 function Hj({ asset: e, onAssetSelect: t, onAnalyze: n }) {
     const { t: r } = ue();
     const { isConnected: s } = gs();
@@ -18761,7 +18685,6 @@ function Hj({ asset: e, onAssetSelect: t, onAnalyze: n }) {
     const [selectedBroker, setSelectedBroker] = x.useState(null);
 
     const corretoras = ["Oqinex","Investoption","Polarium", "Casa Trader", "Olymptrader", "Iq Option", "Exnova", "Bullex", "Ebinex", "Avalon"];
-
 
     return a.jsx("div", {
         className: "flex-1 flex flex-col",
