@@ -37358,108 +37358,145 @@ function $j({ onClick: e, disabled: t }) {
     })
 }
 
-// Estilos em CSS via JavaScript
-const style = document.createElement('style');
-style.textContent = `
-  body {
-    margin: 0;
-    padding: 0;
-    background-color: #111;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    font-family: Arial, sans-serif;
-  }
-
-  .dropdown {
-    position: relative;
-    text-align: center;
-  }
-
-  .dropdown-btn {
-    background: linear-gradient(to right, #ff4e50, #c71d1d);
-    color: white;
-    padding: 14px 22px;
-    font-size: 16px;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-  }
-
-  .dropdown-btn:hover {
-    transform: scale(1.05);
-    box-shadow: 0 6px 12px rgba(255,0,0,0.4);
-  }
-
-  .dropdown-content {
-    display: none;
-    position: absolute;
-    top: 105%;
-    left: 0;
-    right: 0;
-    background-color: #fff;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.4);
-    z-index: 1000;
-  }
-
-  .dropdown-content div {
-    padding: 12px;
-    cursor: pointer;
-    transition: background 0.2s;
-  }
-
-  .dropdown-content div:hover {
-    background-color: #eee;
-  }
-
-  @media (max-width: 600px) {
-    .dropdown-btn {
-      width: 80vw;
-      font-size: 14px;
-    }
-  }
-`;
-document.head.appendChild(style);
-
-// Criando a dropdown
-const dropdown = document.createElement('div');
-dropdown.className = 'dropdown';
-
-const button = document.createElement('button');
-button.className = 'dropdown-btn';
-button.textContent = 'Escolha o Timeframe';
-
-const dropdownContent = document.createElement('div');
-dropdownContent.className = 'dropdown-content';
-
-const opcoes = ['M1', 'M5', '5 seg'];
-opcoes.forEach(opcao => {
-  const item = document.createElement('div');
-  item.textContent = opcao;
-  item.addEventListener('click', () => {
-    button.textContent = opcao;
-    dropdownContent.style.display = 'none';
-  });
-  dropdownContent.appendChild(item);
-});
-
-button.addEventListener('click', () => {
-  dropdownContent.style.display = 
-    dropdownContent.style.display === 'block' ? 'none' : 'block';
-});
-
-// Adiciona tudo ao DOM
-dropdown.appendChild(button);
-dropdown.appendChild(dropdownContent);
-document.body.appendChild(dropdown);
 
 
 
+
+function Hj({ asset: e, onAssetSelect: t, onAnalyze: n }) {
+    const { t: r } = ue();
+    const { isConnected: s } = gs();
+    const [showMenu, setShowMenu] = x.useState(false);
+    const [selectedBroker, setSelectedBroker] = x.useState(null);
+
+    const corretoras = ["Oqinex","Investoption","Polarium", "Casa Trader", "Olymptrader", "Iq Option", "Exnova", "Bullex", "Ebinex", "Avalon"];
+
+    return a.jsx("div", {
+        className: "flex-1 flex flex-col",
+        children: a.jsxs("div", {
+            className: "p-4 space-y-6",
+            children: [
+                a.jsx(zj, {
+                    selectedAsset: e,
+                    onAssetSelect: t
+                }),
+                a.jsx("div", {
+                    style: {
+                        flexDirection: "column",
+                    },
+                    className: "relative w-full flex items-center justify-center",
+                    children: [
+                        a.jsx("img", {
+                            src: "icone.jpeg",
+                            alt: "Trading Animation",
+                            className: "w-full h-full object-contain"
+                        }),
+
+                        // Botão que exibe "Sinais para a corretora (corretora selecionada)" ou "Escolha sua corretora" caso nenhuma corretora tenha sido selecionada
+                        a.jsx("button", {
+                            style: {
+                                backgroundColor: "red",
+                                color: "white",
+                                padding: "8px 16px",
+                                fontSize: "14px",
+                                cursor: "pointer",
+                                border: "none",
+                                borderRadius: "5px",
+                                transition: "background-color 0.3s",
+                                display: "flex",
+                                alignItems: "center",
+                                justifyContent: "center",
+                            },
+                            onClick: () => setShowMenu(!showMenu),
+                            children: [
+                                a.jsx("i", {
+                                    className: "fa fa-line-chart",
+                                    style: {
+                                        marginRight: "10px",
+                                        fontSize: "20px"
+                                    }
+                                }),
+                                a.jsx("font", {
+                                    children: a.jsx("font", {
+                                        style: { verticalAlign: "inherit" },
+                                        children: selectedBroker ? `Sinais para a corretora ${selectedBroker}` : "Escolha sua corretora"
+                                    }),
+                                    style: { verticalAlign: "inherit" }
+                                })
+                            ]
+                        }),
+
+                        // Menu suspenso para escolher a corretora
+                        showMenu && a.jsx("div", {
+                            style: {
+                                position: 'absolute',
+                                backgroundColor: "#f0f0f0",
+                                width: "200px",  // Ajuste a largura aqui
+                                boxShadow: "0px 8px 16px 0px rgba(0,0,0,0.2)",
+                                zIndex: "1",
+                                borderRadius: "5px",
+                                padding: "0",
+                                transition: "all 0.3s ease-in-out",
+                                top: '100%',
+                                left: '50%',  // Coloca o menu no meio
+                                transform: 'translateX(-50%)',  // Ajusta para que o menu fique centralizado
+                                marginTop: '8px',  // Adiciona um pequeno espaço entre o botão e o menu
+                            },
+                            children: corretoras.map(corretora =>
+                                a.jsx("a", {
+                                    href: "#",
+                                    style: {
+                                        display: "block",
+                                        padding: "12px 16px",
+                                        textDecoration: "none",
+                                        color: "black",
+                                        fontSize: "14px",
+                                        transition: "background-color 0.3s, color 0.3s, transform 0.3s",
+                                        textAlign: "center",
+                                        borderBottom: "1px solid #ddd"
+                                    },
+                                    onMouseOver: (e) => {
+                                        e.target.style.backgroundColor = "#FF6347";
+                                        e.target.style.color = "white";
+                                        e.target.style.transform = "scale(1.05)";
+                                    },
+                                    onMouseOut: (e) => {
+                                        e.target.style.backgroundColor = "transparent";
+                                        e.target.style.color = "black";
+                                        e.target.style.transform = "scale(1)";
+                                    },
+                                    onClick: (e) => {
+                                        e.preventDefault();
+                                        setSelectedBroker(corretora);
+                                        setShowMenu(false);
+                                    },
+                                    children: corretora
+                                })
+                            )
+                        })
+                    ]
+                }),
+                a.jsx("div", {
+                    className: "space-y-3",
+                    children: s ? a.jsx($j, {
+                        onClick: n,
+                        disabled: !1
+                    }) : a.jsxs("div", {
+                        className: "bg-blue-500/10 text-blue-400 p-4 rounded-xl flex items-start space-x-3",
+                        children: [
+                            a.jsx(z0, {
+                                className: "w-5 h-5 mt-0.5 flex-shrink-0"
+                            }),
+                            a.jsx("p", {
+                                className: "text-sm",
+                                children: r("connectBrokerForSignals")
+                            })
+                        ]
+                    })
+                })
+            ]
+        })
+    })
+}
 
 function Hj({ asset: e, onAssetSelect: t, onAnalyze: n }) {
     const { t: r } = ue();
