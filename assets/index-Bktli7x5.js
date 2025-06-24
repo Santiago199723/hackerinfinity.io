@@ -18803,7 +18803,7 @@ function Hj({ asset: e, onAssetSelect: t, onAnalyze: n }) {
                                     children: [
                                         a.jsx("button", {
                                             style: {
-                                                backgroundColor: "green",
+                                                backgroundColor: "#f0f0f0",
                                                 color: "white",
                                                 padding: "8px 16px",
                                                 fontSize: "14px",
@@ -18813,6 +18813,8 @@ function Hj({ asset: e, onAssetSelect: t, onAnalyze: n }) {
                                                 display: "flex",
                                                 alignItems: "center",
                                                 justifyContent: "center",
+
+                                                
                                             },
                                             onClick: () => setShowMenu2(!showMenu2),
                                             children: [
