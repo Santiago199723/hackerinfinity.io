@@ -18684,7 +18684,22 @@ function Hj({ asset: e, onAssetSelect: t, onAnalyze: n }) {
     const [showMenu, setShowMenu] = x.useState(false);
     const [selectedBroker, setSelectedBroker] = x.useState(null);
 
-    const corretoras = ["Oqinex","Investoption","Polarium", "Casa Trader", "Olymptrader", "Iq Option", "Exnova", "Bullex", "Ebinex", "Avalon"];
+    // Estado para o novo botão
+    const [showMenu2, setShowMenu2] = x.useState(false);
+    const [selectedBroker2, setSelectedBroker2] = x.useState(null);
+
+    const corretoras = [
+        "Oqinex",
+        "Investoption",
+        "Polarium",
+        "Casa Trader",
+        "Olymptrader",
+        "Iq Option",
+        "Exnova",
+        "Bullex",
+        "Ebinex",
+        "Avalon"
+    ];
 
     return a.jsx("div", {
         className: "flex-1 flex flex-col",
@@ -18696,101 +18711,192 @@ function Hj({ asset: e, onAssetSelect: t, onAnalyze: n }) {
                     onAssetSelect: t
                 }),
                 a.jsx("div", {
-                    style: {
-                        flexDirection: "column",
-                    },
-                    className: "relative w-full flex items-center justify-center",
+                    // Aqui está o container dos botões + imagem de fundo
+                    className: "relative w-full flex items-center justify-between", // justify-between para espalhar
+                    style: { flexDirection: "column" }, // mantém coluna para filhos
                     children: [
+
+                        // Imagem de fundo - deve ficar atrás dos botões, para isso colocamos absolute
                         a.jsx("img", {
                             src: "icone.jpeg",
                             alt: "Trading Animation",
-                            className: "w-full h-full object-contain"
+                            className: "w-full h-full object-contain absolute top-0 left-0",
+                            style: { zIndex: 0 }
                         }),
 
-                        // Botão que exibe "Sinais para a corretora (corretora selecionada)" ou "Escolha sua corretora" caso nenhuma corretora tenha sido selecionada
-                        a.jsx("button", {
-                            style: {
-                                backgroundColor: "red",
-                                color: "white",
-                                padding: "8px 16px",
-                                fontSize: "14px",
-                                cursor: "pointer",
-                                border: "none",
-                                borderRadius: "5px",
-                                transition: "background-color 0.3s",
-                                display: "flex",
-                                alignItems: "center",
-                                justifyContent: "center",
-                            },
-                            onClick: () => setShowMenu(!showMenu),
+                        // Container dos botões, com zIndex pra ficar sobre a imagem
+                        a.jsxs("div", {
+                            className: "relative flex w-full justify-between items-center",
+                            style: { zIndex: 1, paddingTop: "10px" }, // garante que fique sobre a imagem
                             children: [
-                                a.jsx("i", {
-                                    className: "fa fa-line-chart",
-                                    style: {
-                                        marginRight: "10px",
-                                        fontSize: "20px"
-                                    }
+
+                                // Botão original à esquerda
+                                a.jsxs("div", {
+                                    className: "relative",
+                                    children: [
+                                        a.jsx("button", {
+                                            style: {
+                                                backgroundColor: "red",
+                                                color: "white",
+                                                padding: "8px 16px",
+                                                fontSize: "14px",
+                                                cursor: "pointer",
+                                                border: "none",
+                                                borderRadius: "5px",
+                                                transition: "background-color 0.3s",
+                                                display: "flex",
+                                                alignItems: "center",
+                                                justifyContent: "center",
+                                            },
+                                            onClick: () => setShowMenu(!showMenu),
+                                            children: [
+                                                a.jsx("i", {
+                                                    className: "fa fa-line-chart",
+                                                    style: {
+                                                        marginRight: "10px",
+                                                        fontSize: "20px"
+                                                    }
+                                                }),
+                                                a.jsx("font", {
+                                                    children: selectedBroker ? `Sinais para a corretora ${selectedBroker}` : "Escolha sua corretora"
+                                                })
+                                            ]
+                                        }),
+                                        showMenu && a.jsx("div", {
+                                            style: {
+                                                position: 'absolute',
+                                                backgroundColor: "#f0f0f0",
+                                                width: "200px",
+                                                boxShadow: "0px 8px 16px rgba(0,0,0,0.2)",
+                                                zIndex: "2",
+                                                borderRadius: "5px",
+                                                padding: "0",
+                                                transition: "all 0.3s ease-in-out",
+                                                top: '100%',
+                                                left: '50%',
+                                                transform: 'translateX(-50%)',
+                                                marginTop: '8px',
+                                            },
+                                            children: corretoras.map(corretora =>
+                                                a.jsx("a", {
+                                                    href: "#",
+                                                    style: {
+                                                        display: "block",
+                                                        padding: "12px 16px",
+                                                        textDecoration: "none",
+                                                        color: "black",
+                                                        fontSize: "14px",
+                                                        transition: "0.3s",
+                                                        textAlign: "center",
+                                                        borderBottom: "1px solid #ddd"
+                                                    },
+                                                    onMouseOver: (e) => {
+                                                        e.target.style.backgroundColor = "#FF6347";
+                                                        e.target.style.color = "white";
+                                                        e.target.style.transform = "scale(1.05)";
+                                                    },
+                                                    onMouseOut: (e) => {
+                                                        e.target.style.backgroundColor = "transparent";
+                                                        e.target.style.color = "black";
+                                                        e.target.style.transform = "scale(1)";
+                                                    },
+                                                    onClick: (e) => {
+                                                        e.preventDefault();
+                                                        setSelectedBroker(corretora);
+                                                        setShowMenu(false);
+                                                    },
+                                                    children: corretora
+                                                })
+                                            )
+                                        })
+                                    ]
                                 }),
-                                a.jsx("font", {
-                                    children: a.jsx("font", {
-                                        style: { verticalAlign: "inherit" },
-                                        children: selectedBroker ? `Sinais para a corretora ${selectedBroker}` : "Escolha sua corretora"
-                                    }),
-                                    style: { verticalAlign: "inherit" }
-                                })
+
+                                // Botão replicado à direita (exatamente igual)
+                                a.jsxs("div", {
+                                    className: "relative",
+                                    children: [
+                                        a.jsx("button", {
+                                            style: {
+                                                backgroundColor: "red",
+                                                color: "white",
+                                                padding: "8px 16px",
+                                                fontSize: "14px",
+                                                cursor: "pointer",
+                                                border: "none",
+                                                borderRadius: "5px",
+                                                transition: "background-color 0.3s",
+                                                display: "flex",
+                                                alignItems: "center",
+                                                justifyContent: "center",
+                                            },
+                                            onClick: () => setShowMenu2(!showMenu2),
+                                            children: [
+                                                a.jsx("i", {
+                                                    className: "fa fa-line-chart",
+                                                    style: {
+                                                        marginRight: "10px",
+                                                        fontSize: "20px"
+                                                    }
+                                                }),
+                                                a.jsx("font", {
+                                                    children: selectedBroker2 ? `Sinais para a corretora ${selectedBroker2}` : "Escolha sua corretora 2"
+                                                })
+                                            ]
+                                        }),
+                                        showMenu2 && a.jsx("div", {
+                                            style: {
+                                                position: 'absolute',
+                                                backgroundColor: "#f0f0f0",
+                                                width: "200px",
+                                                boxShadow: "0px 8px 16px rgba(0,0,0,0.2)",
+                                                zIndex: "2",
+                                                borderRadius: "5px",
+                                                padding: "0",
+                                                transition: "all 0.3s ease-in-out",
+                                                top: '100%',
+                                                left: '50%',
+                                                transform: 'translateX(-50%)',
+                                                marginTop: '8px',
+                                            },
+                                            children: corretoras.map(corretora =>
+                                                a.jsx("a", {
+                                                    href: "#",
+                                                    style: {
+                                                        display: "block",
+                                                        padding: "12px 16px",
+                                                        textDecoration: "none",
+                                                        color: "black",
+                                                        fontSize: "14px",
+                                                        transition: "0.3s",
+                                                        textAlign: "center",
+                                                        borderBottom: "1px solid #ddd"
+                                                    },
+                                                    onMouseOver: (e) => {
+                                                        e.target.style.backgroundColor = "#FF6347";
+                                                        e.target.style.color = "white";
+                                                        e.target.style.transform = "scale(1.05)";
+                                                    },
+                                                    onMouseOut: (e) => {
+                                                        e.target.style.backgroundColor = "transparent";
+                                                        e.target.style.color = "black";
+                                                        e.target.style.transform = "scale(1)";
+                                                    },
+                                                    onClick: (e) => {
+                                                        e.preventDefault();
+                                                        setSelectedBroker2(corretora);
+                                                        setShowMenu2(false);
+                                                    },
+                                                    children: corretora
+                                                })
+                                            )
+                                        })
+                                    ]
+                                }),
+
                             ]
                         }),
 
-                        // Menu suspenso para escolher a corretora
-                        showMenu && a.jsx("div", {
-                            style: {
-                                position: 'absolute',
-                                backgroundColor: "#f0f0f0",
-                                width: "200px",  // Ajuste a largura aqui
-                                boxShadow: "0px 8px 16px 0px rgba(0,0,0,0.2)",
-                                zIndex: "1",
-                                borderRadius: "5px",
-                                padding: "0",
-                                transition: "all 0.3s ease-in-out",
-                                top: '100%',
-                                left: '50%',  // Coloca o menu no meio
-                                transform: 'translateX(-50%)',  // Ajusta para que o menu fique centralizado
-                                marginTop: '8px',  // Adiciona um pequeno espaço entre o botão e o menu
-                            },
-                            children: corretoras.map(corretora =>
-                                a.jsx("a", {
-                                    href: "#",
-                                    style: {
-                                        display: "block",
-                                        padding: "12px 16px",
-                                        textDecoration: "none",
-                                        color: "black",
-                                        fontSize: "14px",
-                                        transition: "background-color 0.3s, color 0.3s, transform 0.3s",
-                                        textAlign: "center",
-                                        borderBottom: "1px solid #ddd"
-                                    },
-                                    onMouseOver: (e) => {
-                                        e.target.style.backgroundColor = "#FF6347";
-                                        e.target.style.color = "white";
-                                        e.target.style.transform = "scale(1.05)";
-                                    },
-                                    onMouseOut: (e) => {
-                                        e.target.style.backgroundColor = "transparent";
-                                        e.target.style.color = "black";
-                                        e.target.style.transform = "scale(1)";
-                                    },
-                                    onClick: (e) => {
-                                        e.preventDefault();
-                                        setSelectedBroker(corretora);
-                                        setShowMenu(false);
-                                    },
-                                    children: corretora
-                                })
-                            )
-                        })
-                    ]
-                }),
                 a.jsx("div", {
                     className: "space-y-3",
                     children: s ? a.jsx($j, {
@@ -18809,10 +18915,12 @@ function Hj({ asset: e, onAssetSelect: t, onAnalyze: n }) {
                         ]
                     })
                 })
+
             ]
         })
-    })
+    });
 }
+
 
 
 const Wj = ({ asset: e }) => {
