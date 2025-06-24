@@ -18826,7 +18826,7 @@ function Hj({ asset: e, onAssetSelect: t, onAnalyze: n }) {
                                                 a.jsx("font", {
                                                     children: a.jsx("font", {
                                                         style: { verticalAlign: "inherit" },
-                                                        children: selectedBroker2 ? `Extra sinais: ${selectedBroker2}` : "Escolha o Timeframe"
+                                                        children: selectedBroker2 ? `Sinais para ${selectedBroker2}` : "Escolha o Timeframe"
                                                     }),
                                                     style: { verticalAlign: "inherit" }
                                                 })
