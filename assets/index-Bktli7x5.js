@@ -18860,7 +18860,7 @@ function Hj({ asset: e, onAssetSelect: t, onAnalyze: n }) {
                                                         borderBottom: "1px solid #ddd"
                                                     },
                                                     onMouseOver: (e) => {
-                                                        e.target.style.backgroundColor = "#32CD32";
+                                                        e.target.style.backgroundColor = "#b31d22";
                                                         e.target.style.color = "white";
                                                         e.target.style.transform = "scale(1.05)";
                                                     },
