@@ -18803,7 +18803,7 @@ function Hj({ asset: e, onAssetSelect: t, onAnalyze: n }) {
                                     children: [
                                         a.jsx("button", {
                                             style: {
-                                                backgroundColor: "#f0f0f0",
+                                                backgroundColor: "red",
                                                 color: "white",
                                                 padding: "8px 16px",
                                                 fontSize: "14px",
