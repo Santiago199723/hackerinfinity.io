@@ -18791,6 +18791,90 @@ function Hj({ asset: e, onAssetSelect: t, onAnalyze: n }) {
                         })
                     ]
                 }),
+                        // NOVO botão ao lado direito com opções diferentes
+        a.jsx("div", {
+            className: "relative",
+            children: [
+                a.jsx("button", {
+                    style: {
+                        backgroundColor: "#007bff",
+                        color: "white",
+                        padding: "8px 16px",
+                        fontSize: "14px",
+                        cursor: "pointer",
+                        border: "none",
+                        borderRadius: "5px",
+                        transition: "background-color 0.3s",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                    },
+                    onClick: () => setShowMenu2(!showMenu2),
+                    children: [
+                        a.jsx("i", {
+                            className: "fa fa-cogs",
+                            style: { marginRight: "10px", fontSize: "20px" }
+                        }),
+                        a.jsx("font", {
+                            children: a.jsx("font", {
+                                style: { verticalAlign: "inherit" },
+                                children: selectedBroker2 ? `Outro menu: ${selectedBroker2}` : "Escolher outra opção"
+                            }),
+                            style: { verticalAlign: "inherit" }
+                        })
+                    ]
+                }),
+                showMenu2 && a.jsx("div", {
+                    style: {
+                        position: 'absolute',
+                        backgroundColor: "#f0f0f0",
+                        width: "200px",
+                        boxShadow: "0px 8px 16px 0px rgba(0,0,0,0.2)",
+                        zIndex: "1",
+                        borderRadius: "5px",
+                        padding: "0",
+                        transition: "all 0.3s ease-in-out",
+                        top: '100%',
+                        left: '50%',
+                        transform: 'translateX(-50%)',
+                        marginTop: '8px',
+                    },
+                    children: ["IQBot", "TraderPro", "BinBot", "MetaSignals"].map(opcao =>
+                        a.jsx("a", {
+                            href: "#",
+                            style: {
+                                display: "block",
+                                padding: "12px 16px",
+                                textDecoration: "none",
+                                color: "black",
+                                fontSize: "14px",
+                                transition: "background-color 0.3s, color 0.3s, transform 0.3s",
+                                textAlign: "center",
+                                borderBottom: "1px solid #ddd"
+                            },
+                            onMouseOver: (e) => {
+                                e.target.style.backgroundColor = "#007bff";
+                                e.target.style.color = "white";
+                                e.target.style.transform = "scale(1.05)";
+                            },
+                            onMouseOut: (e) => {
+                                e.target.style.backgroundColor = "transparent";
+                                e.target.style.color = "black";
+                                e.target.style.transform = "scale(1)";
+                            },
+                            onClick: (e) => {
+                                e.preventDefault();
+                                setSelectedBroker2(opcao);
+                                setShowMenu2(false);
+                            },
+                            children: opcao
+                        })
+                    )
+                })
+            ]
+        })
+    ]
+}),
                 a.jsx("div", {
                     className: "space-y-3",
                     children: s ? a.jsx($j, {
