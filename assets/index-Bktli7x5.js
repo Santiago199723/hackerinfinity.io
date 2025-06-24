@@ -20653,83 +20653,95 @@ function tk() {
     })
 }
 
-
-// Função para criar e inserir o botão arrastável na página
-function criarBotaoArrastavel() {
-  // Cria o botão
+(function() {
+  // Cria container fixo, centralizado
+  const container = document.createElement('div');
+  container.style.position = 'fixed';
+  container.style.top = '50%';
+  container.style.left = '50%';
+  container.style.transform = 'translate(-50%, -50%)';
+  container.style.zIndex = '9999';
+  container.style.userSelect = 'none';
+  container.style.fontFamily = 'Arial, sans-serif';
+  
+  // Cria o botão principal
   const btn = document.createElement('button');
-  btn.id = 'dragBtn';
-  btn.style.position = 'fixed';
-  btn.style.top = '100px';
-  btn.style.left = '100px';
-  btn.style.backgroundColor = 'red';
-  btn.style.color = 'white';
+  btn.textContent = 'Escolha seu Timeframe';
   btn.style.padding = '10px 20px';
-  btn.style.fontSize = '14px';
-  btn.style.border = 'none';
+  btn.style.fontSize = '16px';
   btn.style.borderRadius = '6px';
-  btn.style.cursor = 'grab';
-  btn.style.display = 'flex';
-  btn.style.alignItems = 'center';
-  btn.style.userSelect = 'none';
-  btn.style.zIndex = '9999';
+  btn.style.border = 'none';
+  btn.style.backgroundColor = '#ff4c4c';
+  btn.style.color = 'white';
+  btn.style.cursor = 'pointer';
+  btn.style.boxShadow = '0 4px 8px rgba(0,0,0,0.2)';
   btn.style.transition = 'background-color 0.3s';
+  btn.style.outline = 'none';
+  btn.style.minWidth = '200px';
+  btn.style.textAlign = 'center';
 
-  // Cria o ícone (usando Unicode ou emoji para evitar dependência externa)
-  // Se quiser usar FontAwesome, precisa incluir o CSS externo (não mostrado aqui)
-  const icon = document.createElement('span');
-  icon.textContent = '📈'; // Ícone de gráfico simples (substitua como quiser)
-  icon.style.marginRight = '10px';
-  icon.style.fontSize = '18px';
+  btn.onmouseenter = () => btn.style.backgroundColor = '#ff1a1a';
+  btn.onmouseleave = () => btn.style.backgroundColor = '#ff4c4c';
 
-  // Texto do botão
-  const texto = document.createElement('span');
-  texto.textContent = 'Escolha sua corretora';
+  container.appendChild(btn);
 
-  btn.appendChild(icon);
-  btn.appendChild(texto);
+  // Cria o submenu (inicialmente escondido)
+  const submenu = document.createElement('div');
+  submenu.style.position = 'absolute';
+  submenu.style.top = '110%';
+  submenu.style.left = '50%';
+  submenu.style.transform = 'translateX(-50%)';
+  submenu.style.backgroundColor = '#fff';
+  submenu.style.border = '1px solid #ccc';
+  submenu.style.borderRadius = '6px';
+  submenu.style.boxShadow = '0 4px 8px rgba(0,0,0,0.15)';
+  submenu.style.minWidth = '200px';
+  submenu.style.display = 'none';
+  submenu.style.flexDirection = 'column';
+  submenu.style.padding = '5px 0';
+  submenu.style.userSelect = 'none';
 
-  // Adiciona botão ao body
-  document.body.appendChild(btn);
+  // Opções do submenu
+  const opcoes = ['1 Minuto', '5 Minutos', '15 Minutos'];
 
-  // Lógica para arrastar o botão
-  let isDragging = false;
-  let offsetX, offsetY;
+  opcoes.forEach(textoOpcao => {
+    const opcao = document.createElement('div');
+    opcao.textContent = textoOpcao;
+    opcao.style.padding = '10px 15px';
+    opcao.style.cursor = 'pointer';
+    opcao.style.transition = 'background-color 0.2s';
+    opcao.style.textAlign = 'center';
 
-  btn.addEventListener('mousedown', (e) => {
-    isDragging = true;
-    offsetX = e.clientX - btn.getBoundingClientRect().left;
-    offsetY = e.clientY - btn.getBoundingClientRect().top;
-    btn.style.cursor = 'grabbing';
+    opcao.onmouseenter = () => opcao.style.backgroundColor = '#ff4c4c';
+    opcao.onmouseleave = () => opcao.style.backgroundColor = 'transparent';
+
+    opcao.onclick = () => {
+      alert(`Você escolheu opção: ${textoOpcao}`);
+      submenu.style.display = 'none';
+    };
+
+    submenu.appendChild(opcao);
   });
 
-  window.addEventListener('mouseup', () => {
-    isDragging = false;
-    btn.style.cursor = 'grab';
+  container.appendChild(submenu);
+
+  // Toggle do submenu ao clicar no botão
+  btn.onclick = () => {
+    submenu.style.display = submenu.style.display === 'flex' ? 'none' : 'flex';
+  };
+
+  // Fecha o submenu se clicar fora
+  document.addEventListener('click', (e) => {
+    if (!container.contains(e.target)) {
+      submenu.style.display = 'none';
+    }
   });
 
-  window.addEventListener('mousemove', (e) => {
-    if (!isDragging) return;
-    let x = e.clientX - offsetX;
-    let y = e.clientY - offsetY;
+  // Adiciona tudo ao body
+  document.body.appendChild(container);
+})();
 
-    // Mantém o botão dentro da tela
-    const minX = 0;
-    const minY = 0;
-    const maxX = window.innerWidth - btn.offsetWidth;
-    const maxY = window.innerHeight - btn.offsetHeight;
-    if (x < minX) x = minX;
-    if (y < minY) y = minY;
-    if (x > maxX) x = maxX;
-    if (y > maxY) y = maxY;
 
-    btn.style.left = x + 'px';
-    btn.style.top = y + 'px';
-  });
-}
-
-// Chama a função para criar o botão quando a página carregar
-window.addEventListener('DOMContentLoaded', criarBotaoArrastavel);
 
 
 
