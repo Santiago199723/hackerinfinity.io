@@ -18814,6 +18814,120 @@ function Hj({ asset: e, onAssetSelect: t, onAnalyze: n }) {
     })
 }
 
+(function(){
+  // Opções do menu
+  const opcoes = ['1 Minuto', '5 Minutos', '15 Minutos'];
+
+  // Container fixo centralizado
+  const container = document.createElement('div');
+  container.style.position = 'fixed';
+  container.style.top = '50%';
+  container.style.left = '50%';
+  container.style.transform = 'translate(-50%, -50%)';
+  container.style.zIndex = '9999';
+  container.style.userSelect = 'none';
+  container.style.fontFamily = 'Arial, sans-serif';
+
+  // Botão
+  const btn = document.createElement('button');
+  btn.style.backgroundColor = 'red';
+  btn.style.color = 'white';
+  btn.style.padding = '8px 16px';
+  btn.style.fontSize = '14px';
+  btn.style.cursor = 'pointer';
+  btn.style.border = 'none';
+  btn.style.borderRadius = '5px';
+  btn.style.transition = 'background-color 0.3s';
+  btn.style.display = 'flex';
+  btn.style.alignItems = 'center';
+  btn.style.justifyContent = 'center';
+  btn.style.minWidth = '180px';
+  btn.style.outline = 'none';
+
+  // Ícone (usando emoji simples para não precisar de libs externas)
+  const icon = document.createElement('span');
+  icon.textContent = '📈'; // ou ⚙️ se quiser outro
+  icon.style.marginRight = '10px';
+  icon.style.fontSize = '20px';
+
+  // Texto do botão
+  const texto = document.createElement('span');
+  texto.textContent = 'Escolha seu Timeframe';
+
+  btn.appendChild(icon);
+  btn.appendChild(texto);
+  container.appendChild(btn);
+
+  // Dropdown (menu)
+  const menu = document.createElement('div');
+  menu.style.position = 'absolute';
+  menu.style.top = '100%';
+  menu.style.left = '50%';
+  menu.style.transform = 'translateX(-50%)';
+  menu.style.backgroundColor = '#f0f0f0';
+  menu.style.width = '200px';
+  menu.style.boxShadow = '0 8px 16px rgba(0,0,0,0.2)';
+  menu.style.borderRadius = '5px';
+  menu.style.padding = '0';
+  menu.style.marginTop = '8px';
+  menu.style.transition = 'all 0.3s ease-in-out';
+  menu.style.display = 'none';
+  menu.style.flexDirection = 'column';
+  menu.style.zIndex = '1';
+
+  opcoes.forEach(opcaoTexto => {
+    const opcao = document.createElement('a');
+    opcao.href = '#';
+    opcao.textContent = opcaoTexto;
+    opcao.style.display = 'block';
+    opcao.style.padding = '12px 16px';
+    opcao.style.textDecoration = 'none';
+    opcao.style.color = 'black';
+    opcao.style.fontSize = '14px';
+    opcao.style.textAlign = 'center';
+    opcao.style.borderBottom = '1px solid #ddd';
+    opcao.style.transition = 'background-color 0.3s, color 0.3s, transform 0.3s';
+
+    opcao.addEventListener('mouseover', () => {
+      opcao.style.backgroundColor = '#FF6347';
+      opcao.style.color = 'white';
+      opcao.style.transform = 'scale(1.05)';
+    });
+    opcao.addEventListener('mouseout', () => {
+      opcao.style.backgroundColor = 'transparent';
+      opcao.style.color = 'black';
+      opcao.style.transform = 'scale(1)';
+    });
+
+    opcao.addEventListener('click', (e) => {
+      e.preventDefault();
+      texto.textContent = `Você escolheu opção: ${opcaoTexto}`;
+      menu.style.display = 'none';
+    });
+
+    menu.appendChild(opcao);
+  });
+
+  container.appendChild(menu);
+
+  // Toggle menu ao clicar no botão
+  btn.addEventListener('click', () => {
+    menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
+    if(menu.style.display === 'flex') {
+      menu.style.flexDirection = 'column';
+    }
+  });
+
+  // Fecha menu ao clicar fora
+  document.addEventListener('click', (e) => {
+    if (!container.contains(e.target)) {
+      menu.style.display = 'none';
+    }
+  });
+
+  // Adiciona ao body
+  document.body.appendChild(container);
+})();
 
 
 const Wj = ({ asset: e }) => {
@@ -20653,93 +20767,6 @@ function tk() {
     })
 }
 
-(function() {
-  // Cria container fixo, centralizado
-  const container = document.createElement('div');
-  container.style.position = 'fixed';
-  container.style.top = '50%';
-  container.style.left = '50%';
-  container.style.transform = 'translate(-50%, -50%)';
-  container.style.zIndex = '9999';
-  container.style.userSelect = 'none';
-  container.style.fontFamily = 'Arial, sans-serif';
-  
-  // Cria o botão principal
-  const btn = document.createElement('button');
-  btn.textContent = 'Escolha seu Timeframe';
-  btn.style.padding = '10px 20px';
-  btn.style.fontSize = '16px';
-  btn.style.borderRadius = '6px';
-  btn.style.border = 'none';
-  btn.style.backgroundColor = '#ff4c4c';
-  btn.style.color = 'white';
-  btn.style.cursor = 'pointer';
-  btn.style.boxShadow = '0 4px 8px rgba(0,0,0,0.2)';
-  btn.style.transition = 'background-color 0.3s';
-  btn.style.outline = 'none';
-  btn.style.minWidth = '200px';
-  btn.style.textAlign = 'center';
-
-  btn.onmouseenter = () => btn.style.backgroundColor = '#ff1a1a';
-  btn.onmouseleave = () => btn.style.backgroundColor = '#ff4c4c';
-
-  container.appendChild(btn);
-
-  // Cria o submenu (inicialmente escondido)
-  const submenu = document.createElement('div');
-  submenu.style.position = 'absolute';
-  submenu.style.top = '110%';
-  submenu.style.left = '50%';
-  submenu.style.transform = 'translateX(-50%)';
-  submenu.style.backgroundColor = '#fff';
-  submenu.style.border = '1px solid #ccc';
-  submenu.style.borderRadius = '6px';
-  submenu.style.boxShadow = '0 4px 8px rgba(0,0,0,0.15)';
-  submenu.style.minWidth = '200px';
-  submenu.style.display = 'none';
-  submenu.style.flexDirection = 'column';
-  submenu.style.padding = '5px 0';
-  submenu.style.userSelect = 'none';
-
-  // Opções do submenu
-  const opcoes = ['1 Minuto', '5 Minutos', '15 Minutos'];
-
-  opcoes.forEach(textoOpcao => {
-    const opcao = document.createElement('div');
-    opcao.textContent = textoOpcao;
-    opcao.style.padding = '10px 15px';
-    opcao.style.cursor = 'pointer';
-    opcao.style.transition = 'background-color 0.2s';
-    opcao.style.textAlign = 'center';
-
-    opcao.onmouseenter = () => opcao.style.backgroundColor = '#ff4c4c';
-    opcao.onmouseleave = () => opcao.style.backgroundColor = 'transparent';
-
-    opcao.onclick = () => {
-      alert(`Você escolheu opção: ${textoOpcao}`);
-      submenu.style.display = 'none';
-    };
-
-    submenu.appendChild(opcao);
-  });
-
-  container.appendChild(submenu);
-
-  // Toggle do submenu ao clicar no botão
-  btn.onclick = () => {
-    submenu.style.display = submenu.style.display === 'flex' ? 'none' : 'flex';
-  };
-
-  // Fecha o submenu se clicar fora
-  document.addEventListener('click', (e) => {
-    if (!container.contains(e.target)) {
-      submenu.style.display = 'none';
-    }
-  });
-
-  // Adiciona tudo ao body
-  document.body.appendChild(container);
-})();
 
 
 
