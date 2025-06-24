@@ -18805,6 +18805,104 @@ function Hj({ asset: e, onAssetSelect: t, onAnalyze: n }) {
                             a.jsx("p", {
                                 className: "text-sm",
                                 children: r("connectBrokerForSignals")
+                                // Botão que exibe "Sinais para a corretora (corretora selecionada)" ou " sua corretora" caso nenhuma corretora tenha sido selecionada
+                        a.jsx("button", {
+                            style: {
+                                backgroundColor: "red",
+                                color: "white",
+                                padding: "8px 16px",
+                                fontSize: "14px",
+                                cursor: "pointer",
+                                border: "none",
+                                borderRadius: "5px",
+                                transition: "background-color 0.3s",
+                                display: "flex",
+                                alignItems: "center",
+                                justifyContent: "center",
+                            },
+                            onClick: () => setShowMenu(!showMenu),
+                            children: [
+                                a.jsx("i", {
+                                    className: "fa fa-line-chart",
+                                    style: {
+                                        marginRight: "10px",
+                                        fontSize: "20px"
+                                    }
+                                }),
+                                a.jsx("font", {
+                                    children: a.jsx("font", {
+                                        style: { verticalAlign: "inherit" },
+                                        children: selectedBroker ? `Sinais para a corretora ${selectedBroker}` : "Escolha sua corretora"
+                                    }),
+                                    style: { verticalAlign: "inherit" }
+                                })
+                            ]
+                        }),
+
+                        // Menu suspenso para escolher a corretora
+                        showMenu && a.jsx("div", {
+                            style: {
+                                position: 'absolute',
+                                backgroundColor: "#f0f0f0",
+                                width: "200px",  // Ajuste a largura aqui
+                                boxShadow: "0px 8px 16px 0px rgba(0,0,0,0.2)",
+                                zIndex: "1",
+                                borderRadius: "5px",
+                                padding: "0",
+                                transition: "all 0.3s ease-in-out",
+                                top: '100%',
+                                left: '50%',  // Coloca o menu no meio
+                                transform: 'translateX(-50%)',  // Ajusta para que o menu fique centralizado
+                                marginTop: '8px',  // Adiciona um pequeno espaço entre o botão e o menu
+                            },
+                            children: corretoras.map(corretora =>
+                                a.jsx("a", {
+                                    href: "#",
+                                    style: {
+                                        display: "block",
+                                        padding: "12px 16px",
+                                        textDecoration: "none",
+                                        color: "black",
+                                        fontSize: "14px",
+                                        transition: "background-color 0.3s, color 0.3s, transform 0.3s",
+                                        textAlign: "center",
+                                        borderBottom: "1px solid #ddd"
+                                    },
+                                    onMouseOver: (e) => {
+                                        e.target.style.backgroundColor = "#FF6347";
+                                        e.target.style.color = "white";
+                                        e.target.style.transform = "scale(1.05)";
+                                    },
+                                    onMouseOut: (e) => {
+                                        e.target.style.backgroundColor = "transparent";
+                                        e.target.style.color = "black";
+                                        e.target.style.transform = "scale(1)";
+                                    },
+                                    onClick: (e) => {
+                                        e.preventDefault();
+                                        setSelectedBroker(corretora);
+                                        setShowMenu(false);
+                                    },
+                                    children: corretora
+                                })
+                            )
+                        })
+                    ]
+                }),
+                a.jsx("div", {
+                    className: "space-y-3",
+                    children: s ? a.jsx($j, {
+                        onClick: n,
+                        disabled: !1
+                    }) : a.jsxs("div", {
+                        className: "bg-blue-500/10 text-blue-400 p-4 rounded-xl flex items-start space-x-3",
+                        children: [
+                            a.jsx(z0, {
+                                className: "w-5 h-5 mt-0.5 flex-shrink-0"
+                            }),
+                            a.jsx("p", {
+                                className: "text-sm",
+                                children: r("connectBrokerForSignals")
                             })
                         ]
                     })
@@ -18814,120 +18912,6 @@ function Hj({ asset: e, onAssetSelect: t, onAnalyze: n }) {
     })
 }
 
-(function(){
-  // Opções do menu
-  const opcoes = ['1 Minuto', '5 Minutos', '15 Minutos'];
-
-  // Container fixo centralizado
-  const container = document.createElement('div');
-  container.style.position = 'fixed';
-  container.style.top = '90%'
-  container.style.left = '50%';
-  container.style.transform = 'translate(-50%, -50%)';
-  container.style.zIndex = '9999';
-  container.style.userSelect = 'none';
-  container.style.fontFamily = 'Arial, sans-serif';
-
-  // Botão
-  const btn = document.createElement('button');
-  btn.style.backgroundColor = 'red';
-  btn.style.color = 'white';
-  btn.style.padding = '8px 16px';
-  btn.style.fontSize = '14px';
-  btn.style.cursor = 'pointer';
-  btn.style.border = 'none';
-  btn.style.borderRadius = '5px';
-  btn.style.transition = 'background-color 0.3s';
-  btn.style.display = 'flex';
-  btn.style.alignItems = 'center';
-  btn.style.justifyContent = 'center';
-  btn.style.minWidth = '180px';
-  btn.style.outline = 'none';
-
-  // Ícone (usando emoji simples para não precisar de libs externas)
-  const icon = document.createElement('span');
-  icon.textContent = '🕘'; // ou ⚙️ se quiser outro
-  icon.style.marginRight = '10px';
-  icon.style.fontSize = '20px';
-
-  // Texto do botão
-  const texto = document.createElement('span');
-  texto.textContent = 'Escolha seu Timeframe';
-
-  btn.appendChild(icon);
-  btn.appendChild(texto);
-  container.appendChild(btn);
-
-  // Dropdown (menu)
-  const menu = document.createElement('div');
-  menu.style.position = 'absolute';
-  menu.style.top = '100%';
-  menu.style.left = '50%';
-  menu.style.transform = 'translateX(-50%)';
-  menu.style.backgroundColor = '#f0f0f0';
-  menu.style.width = '200px';
-  menu.style.boxShadow = '0 8px 16px rgba(0,0,0,0.2)';
-  menu.style.borderRadius = '5px';
-  menu.style.padding = '0';
-  menu.style.marginTop = '8px';
-  menu.style.transition = 'all 0.3s ease-in-out';
-  menu.style.display = 'none';
-  menu.style.flexDirection = 'column';
-  menu.style.zIndex = '1';
-
-  opcoes.forEach(opcaoTexto => {
-    const opcao = document.createElement('a');
-    opcao.href = '#';
-    opcao.textContent = opcaoTexto;
-    opcao.style.display = 'block';
-    opcao.style.padding = '12px 16px';
-    opcao.style.textDecoration = 'none';
-    opcao.style.color = 'black';
-    opcao.style.fontSize = '14px';
-    opcao.style.textAlign = 'center';
-    opcao.style.borderBottom = '1px solid #ddd';
-    opcao.style.transition = 'background-color 0.3s, color 0.3s, transform 0.3s';
-
-    opcao.addEventListener('mouseover', () => {
-      opcao.style.backgroundColor = '#FF6347';
-      opcao.style.color = 'white';
-      opcao.style.transform = 'scale(1.05)';
-    });
-    opcao.addEventListener('mouseout', () => {
-      opcao.style.backgroundColor = 'transparent';
-      opcao.style.color = 'black';
-      opcao.style.transform = 'scale(1)';
-    });
-
-    opcao.addEventListener('click', (e) => {
-      e.preventDefault();
-      texto.textContent = `Sinais para Timeframe de: ${opcaoTexto}`;
-      menu.style.display = 'none';
-    });
-
-    menu.appendChild(opcao);
-  });
-
-  container.appendChild(menu);
-
-  // Toggle menu ao clicar no botão
-  btn.addEventListener('click', () => {
-    menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
-    if(menu.style.display === 'flex') {
-      menu.style.flexDirection = 'column';
-    }
-  });
-
-  // Fecha menu ao clicar fora
-  document.addEventListener('click', (e) => {
-    if (!container.contains(e.target)) {
-      menu.style.display = 'none';
-    }
-  });
-
-  // Adiciona ao body
-  document.body.appendChild(container);
-})();
 
 
 const Wj = ({ asset: e }) => {
