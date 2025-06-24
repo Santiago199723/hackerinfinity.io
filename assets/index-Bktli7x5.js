@@ -18821,7 +18821,7 @@ function Hj({ asset: e, onAssetSelect: t, onAnalyze: n }) {
   // Container fixo centralizado
   const container = document.createElement('div');
   container.style.position = 'fixed';
-  container.style.top = '70%'
+  container.style.top = '110%'
   container.style.left = '50%';
   container.style.transform = 'translate(-50%, -50%)';
   container.style.zIndex = '9999';
