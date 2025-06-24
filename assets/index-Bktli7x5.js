@@ -18688,7 +18688,7 @@ function Hj({ asset: e, onAssetSelect: t, onAnalyze: n }) {
     const [selectedBroker2, setSelectedBroker2] = x.useState(null);
 
     const corretoras = ["Oqinex", "Investoption", "Polarium", "Casa Trader", "Olymptrader", "Iq Option", "Exnova", "Bullex", "Ebinex", "Avalon"];
-    const corretoras2 = ["Binance", "Deriv", "OctaFX", "FBS", "XM", "HotForex"]; // Altere como quiser
+    const corretoras2 = ["M1", "M5", "5 Segundos"]; // Altere como quiser
 
     return a.jsx("div", {
         className: "flex-1 flex flex-col",
@@ -18826,7 +18826,7 @@ function Hj({ asset: e, onAssetSelect: t, onAnalyze: n }) {
                                                 a.jsx("font", {
                                                     children: a.jsx("font", {
                                                         style: { verticalAlign: "inherit" },
-                                                        children: selectedBroker2 ? `Extra sinais: ${selectedBroker2}` : "Escolha outro canal"
+                                                        children: selectedBroker2 ? `Extra sinais: ${selectedBroker2}` : "Escolha o Timeframe"
                                                     }),
                                                     style: { verticalAlign: "inherit" }
                                                 })
