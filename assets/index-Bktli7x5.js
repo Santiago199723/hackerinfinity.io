@@ -18685,10 +18685,10 @@ function Hj({ asset: e, onAssetSelect: t, onAnalyze: n }) {
     const [selectedBroker, setSelectedBroker] = x.useState(null);
 
     const [showMenu2, setShowMenu2] = x.useState(false);
-    const [selectedOption2, setSelectedOption2] = x.useState(null);
+    const [selectedBroker2, setSelectedBroker2] = x.useState(null);
 
     const corretoras = ["Oqinex", "Investoption", "Polarium", "Casa Trader", "Olymptrader", "Iq Option", "Exnova", "Bullex", "Ebinex", "Avalon"];
-    const opcoes2 = ["Opção A", "Opção B", "Opção C"];
+    const corretoras2 = ["Alpha", "Beta", "Gama"];
 
     return a.jsx("div", {
         className: "flex-1 flex flex-col",
@@ -18703,10 +18703,10 @@ function Hj({ asset: e, onAssetSelect: t, onAnalyze: n }) {
                     style: {
                         flexDirection: "column",
                     },
-                    className: "relative w-full flex items-center justify-center space-x-6",
+                    className: "relative w-full flex items-center justify-between", // justify-between para separar
                     children: [
 
-                        // Botão 1 - Escolha sua corretora
+                        // Botão original - alinhado à esquerda
                         a.jsxs("div", {
                             className: "relative",
                             children: [
@@ -18788,7 +18788,7 @@ function Hj({ asset: e, onAssetSelect: t, onAnalyze: n }) {
                             ]
                         }),
 
-                        // Botão 2 - Novo botão com mesmo estilo
+                        // Botão replicado - alinhado à direita (mesmo estilo)
                         a.jsxs("div", {
                             className: "relative",
                             children: [
@@ -18816,7 +18816,7 @@ function Hj({ asset: e, onAssetSelect: t, onAnalyze: n }) {
                                             }
                                         }),
                                         a.jsx("font", {
-                                            children: selectedOption2 ? `Nova opção: ${selectedOption2}` : "Outros sinais"
+                                            children: selectedBroker2 ? `Sinais para a corretora ${selectedBroker2}` : "Escolha sua corretora 2"
                                         })
                                     ]
                                 }),
@@ -18835,7 +18835,7 @@ function Hj({ asset: e, onAssetSelect: t, onAnalyze: n }) {
                                         transform: 'translateX(-50%)',
                                         marginTop: '8px',
                                     },
-                                    children: opcoes2.map(opcao =>
+                                    children: corretoras2.map(corretora =>
                                         a.jsx("a", {
                                             href: "#",
                                             style: {
@@ -18860,10 +18860,10 @@ function Hj({ asset: e, onAssetSelect: t, onAnalyze: n }) {
                                             },
                                             onClick: (e) => {
                                                 e.preventDefault();
-                                                setSelectedOption2(opcao);
+                                                setSelectedBroker2(corretora);
                                                 setShowMenu2(false);
                                             },
-                                            children: opcao
+                                            children: corretora
                                         })
                                     )
                                 })
