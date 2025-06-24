@@ -18846,7 +18846,7 @@ function Hj({ asset: e, onAssetSelect: t, onAnalyze: n }) {
 
   // Ícone (usando emoji simples para não precisar de libs externas)
   const icon = document.createElement('span');
-  icon.textContent = '📈'; // ou ⚙️ se quiser outro
+  icon.textContent = '🕘'; // ou ⚙️ se quiser outro
   icon.style.marginRight = '10px';
   icon.style.fontSize = '20px';
 
