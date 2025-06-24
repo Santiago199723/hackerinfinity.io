@@ -18901,7 +18901,7 @@ function Hj({ asset: e, onAssetSelect: t, onAnalyze: n }) {
 
     opcao.addEventListener('click', (e) => {
       e.preventDefault();
-      texto.textContent = `Você escolheu opção: ${opcaoTexto}`;
+      texto.textContent = `Sinais para Timeframe de: ${opcaoTexto}`;
       menu.style.display = 'none';
     });
 
