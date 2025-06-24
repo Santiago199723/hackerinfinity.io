@@ -18707,7 +18707,7 @@ function Hj({ asset: e, onAssetSelect: t, onAnalyze: n }) {
                             className: "w-full h-full object-contain"
                         }),
 
-                        // Botão que exibe "Sinais para a corretora (corretora selecionada)" ou "Escolha sua corretora" caso nenhuma corretora tenha sido selecionada
+                        // Botão que exibe "Sinais para a corretora (corretora selecionada)" ou " sua corretora" caso nenhuma corretora tenha sido selecionada
                         a.jsx("button", {
                             style: {
                                 backgroundColor: "red",
@@ -18813,6 +18813,7 @@ function Hj({ asset: e, onAssetSelect: t, onAnalyze: n }) {
         })
     })
 }
+
 
 
 const Wj = ({ asset: e }) => {
@@ -20651,6 +20652,88 @@ function tk() {
         })
     })
 }
+
+
+// Função para criar e inserir o botão arrastável na página
+function criarBotaoArrastavel() {
+  // Cria o botão
+  const btn = document.createElement('button');
+  btn.id = 'dragBtn';
+  btn.style.position = 'fixed';
+  btn.style.top = '100px';
+  btn.style.left = '100px';
+  btn.style.backgroundColor = 'red';
+  btn.style.color = 'white';
+  btn.style.padding = '10px 20px';
+  btn.style.fontSize = '14px';
+  btn.style.border = 'none';
+  btn.style.borderRadius = '6px';
+  btn.style.cursor = 'grab';
+  btn.style.display = 'flex';
+  btn.style.alignItems = 'center';
+  btn.style.userSelect = 'none';
+  btn.style.zIndex = '9999';
+  btn.style.transition = 'background-color 0.3s';
+
+  // Cria o ícone (usando Unicode ou emoji para evitar dependência externa)
+  // Se quiser usar FontAwesome, precisa incluir o CSS externo (não mostrado aqui)
+  const icon = document.createElement('span');
+  icon.textContent = '📈'; // Ícone de gráfico simples (substitua como quiser)
+  icon.style.marginRight = '10px';
+  icon.style.fontSize = '18px';
+
+  // Texto do botão
+  const texto = document.createElement('span');
+  texto.textContent = 'Escolha sua corretora';
+
+  btn.appendChild(icon);
+  btn.appendChild(texto);
+
+  // Adiciona botão ao body
+  document.body.appendChild(btn);
+
+  // Lógica para arrastar o botão
+  let isDragging = false;
+  let offsetX, offsetY;
+
+  btn.addEventListener('mousedown', (e) => {
+    isDragging = true;
+    offsetX = e.clientX - btn.getBoundingClientRect().left;
+    offsetY = e.clientY - btn.getBoundingClientRect().top;
+    btn.style.cursor = 'grabbing';
+  });
+
+  window.addEventListener('mouseup', () => {
+    isDragging = false;
+    btn.style.cursor = 'grab';
+  });
+
+  window.addEventListener('mousemove', (e) => {
+    if (!isDragging) return;
+    let x = e.clientX - offsetX;
+    let y = e.clientY - offsetY;
+
+    // Mantém o botão dentro da tela
+    const minX = 0;
+    const minY = 0;
+    const maxX = window.innerWidth - btn.offsetWidth;
+    const maxY = window.innerHeight - btn.offsetHeight;
+    if (x < minX) x = minX;
+    if (y < minY) y = minY;
+    if (x > maxX) x = maxX;
+    if (y > maxY) y = maxY;
+
+    btn.style.left = x + 'px';
+    btn.style.top = y + 'px';
+  });
+}
+
+// Chama a função para criar o botão quando a página carregar
+window.addEventListener('DOMContentLoaded', criarBotaoArrastavel);
+
+
+
+
 "serviceWorker" in navigator && window.addEventListener("load", () => {
     navigator.serviceWorker.register("/sw.js").then(e => {
         console.log("SW registered:", e)
