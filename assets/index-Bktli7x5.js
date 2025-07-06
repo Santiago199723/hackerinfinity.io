@@ -18692,6 +18692,7 @@ function Hj({ asset: e, onAssetSelect: t, onAnalyze: n }) {
 
     const [showMenu2, setShowMenu2] = x.useState(false);
     const [selectedBroker2, setSelectedBroker2] = x.useState(null);
+const [showPlanilhaMenu, setShowPlanilhaMenu] = x.useState(false);
 
     const corretoras = ["Oqinex", "Investoption", "Polarium", "Casa Trader", "Olymptrader", "Iq Option", "Exnova", "Bullex", "Ebinex", "Avalon"];
     const corretoras2 = ["M1", "M5","5 Segundos", "30 Segundos"]; // Altere como quiser
@@ -18804,6 +18805,93 @@ function Hj({ asset: e, onAssetSelect: t, onAnalyze: n }) {
                                 }),
 
                                 // Botão 2
+                                // Botão Planilhas (replica do Timeframe)
+                                a.jsx("div", {
+                                    className: "relative",
+                                    children: [
+                                        a.jsx("button", {
+                                            style: {
+                                                backgroundColor: "red",
+                                                color: "white",
+                                                padding: "8px 16px",
+                                                fontSize: "14px",
+                                                cursor: "pointer",
+                                                border: "none",
+                                                borderRadius: "5px",
+                                                display: "flex",
+                                                alignItems: "center",
+                                                justifyContent: "center",
+                                            },
+                                            onClick: () => setShowPlanilhaMenu(!showPlanilhaMenu),
+                                            children: [
+                                                a.jsx("i", {
+                                                    className: "fa fa-folder",
+                                                    style: {
+                                                        marginRight: "10px",
+                                                        fontSize: "20px"
+                                                    }
+                                                }),
+                                                a.jsx("font", {
+                                                    children: a.jsx("font", {
+                                                        style: { verticalAlign: "inherit" },
+                                                        children: "Planilhas"
+                                                    }),
+                                                    style: { verticalAlign: "inherit" }
+                                                })
+                                            ]
+                                        }),
+                                        showPlanilhaMenu && a.jsx("div", {
+                                            style: {
+                                                position: 'absolute',
+                                                backgroundColor: "#f0f0f0",
+                                                width: "200px",
+                                                boxShadow: "0px 8px 16px 0px rgba(0,0,0,0.2)",
+                                                zIndex: "1",
+                                                borderRadius: "5px",
+                                                top: '100%',
+                                                left: '50%',
+                                                transform: 'translateX(-50%)',
+                                                marginTop: '8px'
+                                            },
+                                            children: [
+                                                {
+                                                    label: "VIP 1",
+                                                    url: "https://exemplo.com/vip1"
+                                                },
+                                                {
+                                                    label: "VIP 2",
+                                                    url: "https://exemplo.com/vip2"
+                                                }
+                                            ].map(planilha =>
+                                                a.jsx("a", {
+                                                    href: planilha.url,
+                                                    target: "_blank",
+                                                    style: {
+                                                        display: "block",
+                                                        padding: "12px 16px",
+                                                        textDecoration: "none",
+                                                        color: "black",
+                                                        fontSize: "14px",
+                                                        textAlign: "center",
+                                                        borderBottom: "1px solid #ddd"
+                                                    },
+                                                    onMouseOver: (e) => {
+                                                        e.target.style.backgroundColor = "#b31d22";
+                                                        e.target.style.color = "white";
+                                                        e.target.style.transform = "scale(1.05)";
+                                                    },
+                                                    onMouseOut: (e) => {
+                                                        e.target.style.backgroundColor = "transparent";
+                                                        e.target.style.color = "black";
+                                                        e.target.style.transform = "scale(1)";
+                                                    },
+                                                    children: planilha.label
+                                                })
+                                            )
+                                        })
+                                    ]
+                                }),
+
                                 a.jsx("div", {
                                     className: "relative",
                                     children: [
@@ -20768,86 +20856,3 @@ function tk() {
 qp(document.getElementById("root")).render(a.jsx(x.StrictMode, {
     children: a.jsx(tk, {})
 }));
-
-document.addEventListener("DOMContentLoaded", function () {
-  const allButtons = Array.from(document.querySelectorAll("button"));
-  const timeframeBtn = allButtons.find(btn => btn.textContent.toLowerCase().includes("timeframe"));
-
-  if (!timeframeBtn || !timeframeBtn.parentElement) return;
-
-  const parentContainer = timeframeBtn.parentElement;
-
-  const newWrapper = document.createElement("div");
-  newWrapper.style.position = "relative";
-  newWrapper.style.marginLeft = "10px";
-  newWrapper.style.display = "inline-block";
-
-  const newButton = document.createElement("button");
-  newButton.textContent = "📋 Planilhas de gerenciamento ▼";
-  newButton.style.padding = timeframeBtn.style.padding || "10px 20px";
-  newButton.style.fontSize = "14px";
-  newButton.style.fontWeight = "bold";
-  newButton.style.background = "#e60000";
-  newButton.style.color = "white";
-  newButton.style.border = "none";
-  newButton.style.borderRadius = "6px";
-  newButton.style.cursor = "pointer";
-
-  const dropdown = document.createElement("div");
-  dropdown.style.display = "none";
-  dropdown.style.flexDirection = "column";
-  dropdown.style.position = "absolute";
-  dropdown.style.top = "100%";
-  dropdown.style.left = "0";
-  dropdown.style.background = "#fff";
-  dropdown.style.boxShadow = "0 4px 12px rgba(0,0,0,0.1)";
-  dropdown.style.borderRadius = "8px";
-  dropdown.style.minWidth = "180px";
-  dropdown.style.padding = "10px";
-  dropdown.style.zIndex = "9999";
-
-  const vip1 = document.createElement("a");
-  vip1.href = "https://exemplo.com/vip1";
-  vip1.target = "_blank";
-  vip1.textContent = "VIP 1";
-  vip1.style.padding = "8px 10px";
-  vip1.style.textDecoration = "none";
-  vip1.style.color = "#111";
-  vip1.style.borderRadius = "5px";
-  vip1.style.transition = "background 0.2s";
-
-  const vip2 = document.createElement("a");
-  vip2.href = "https://exemplo.com/vip2";
-  vip2.target = "_blank";
-  vip2.textContent = "VIP 2";
-  vip2.style.padding = "8px 10px";
-  vip2.style.textDecoration = "none";
-  vip2.style.color = "#111";
-  vip2.style.borderRadius = "5px";
-  vip2.style.transition = "background 0.2s";
-
-  [vip1, vip2].forEach(link => {
-    link.addEventListener("mouseover", () => {
-      link.style.background = "#f0f0f0";
-    });
-    link.addEventListener("mouseout", () => {
-      link.style.background = "transparent";
-    });
-  });
-
-  dropdown.appendChild(vip1);
-  dropdown.appendChild(vip2);
-
-  newButton.addEventListener("click", (e) => {
-    e.stopPropagation();
-    dropdown.style.display = dropdown.style.display === "flex" ? "none" : "flex";
-  });
-
-  document.addEventListener("click", () => {
-    dropdown.style.display = "none";
-  });
-
-  newWrapper.appendChild(newButton);
-  newWrapper.appendChild(dropdown);
-  parentContainer.appendChild(newWrapper);
-});
