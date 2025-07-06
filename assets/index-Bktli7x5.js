@@ -17973,11 +17973,10 @@ const Zu = [{
             label: t("settings"),
             path: "/settings"
         }, {
-            icon: spreadsheetIcon, // substitua pelo ícone real
-            label: t("planilhas"),
-            path: "/planilhas"
+            icon: qu,
+            label: t("settings"),
+            path: "/settings"
         }];
-
 
         return a.jsxs("div", {
             className: "w-20 h-screen bg-[#13141C] border-r border-[#1E2030] flex flex-col items-center py-6 fixed",
@@ -19154,31 +19153,26 @@ const Wj = ({ asset: e }) => {
             })]
         })
     }
-, ws = () => {
-    const e = rr()
-        , { t } = ue()
-        , n = [{
-            icon: G0,
-            label: t("dashboard"),
-            path: "/"
-        }, {
-            icon: po,
-            label: t("analysis"),
-            path: "/analysis"
-        }, {
-            icon: K0,
-            label: t("history"),
-            path: "/history"
-        }, {
-            icon: qu,
-            label: t("settings"),
-            path: "/settings"
-        }, {
-            icon: spreadsheetIcon, // substitua pelo ícone que você estiver usando
-            label: t("planilhas"),
-            path: "/planilhas"
-        }];
-
+    , ws = () => {
+        const e = rr()
+            , { t } = ue()
+            , n = [{
+                icon: G0,
+                label: t("dashboard"),
+                path: "/"
+            }, {
+                icon: po,
+                label: t("analysis"),
+                path: "/analysis"
+            }, {
+                icon: K0,
+                label: t("history"),
+                path: "/history"
+            }, {
+                icon: qu,
+                label: t("settings"),
+                path: "/settings"
+            }];
 
         return a.jsx("div", {
             className: "fixed bottom-0 left-0 right-0 h-16 bg-[#13141C] border-t border-[#1E2030] flex items-center justify-around px-2 z-30",
@@ -20735,18 +20729,18 @@ function tk() {
                                 onAnalyze: d
                             })
                        }), a.jsx(xn, {
-                        path: "/analysis",
-                        element: a.jsx(qj, {})
-                    }), a.jsx(xn, {
-                        path: "/history",
-                        element: a.jsx(Zj, {})
-                    }), a.jsx(xn, {
-                        path: "/settings",
-                        element: a.jsx(ek, {})
-                    }), a.jsx(xn, {
-                        path: "/settings",
-                        element: a.jsx(ek, {})
-                    })]
+                    path: "/analysis",
+                    element: a.jsx(qj, {})
+                }), a.jsx(xn, {
+                    path: "/history",
+                    element: a.jsx(Zj, {})
+                }), a.jsx(xn, {
+                    path: "/settings",
+                    element: a.jsx(ek, {})
+                }), a.jsx(xn, {
+                    path: "/settings",
+                    element: a.jsx(ek, {})
+                })]
 
                     }), a.jsxs(I0, {
                         children: [n && a.jsx(tg, {
