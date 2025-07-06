@@ -20771,13 +20771,15 @@ qp(document.getElementById("root")).render(a.jsx(x.StrictMode, {
 
 document.addEventListener("DOMContentLoaded", function () {
   const allDivs = Array.from(document.querySelectorAll("div"));
-  const timeFrameBtn = allDivs.find(div => div.textContent.trim().toLowerCase().includes("frame"));
+  const timeframeBtn = allDivs.find(div => div.textContent.trim().toLowerCase().includes("frame"));
+  const corretoraBtn = allDivs.find(div => div.textContent.trim().toLowerCase().includes("corretora"));
 
-  if (!timeFrameBtn) return;
+  const targetParent = timeframeBtn?.parentElement || corretoraBtn?.parentElement;
+  if (!targetParent) return;
 
   const newWrapper = document.createElement("div");
   newWrapper.style.position = "relative";
-  newWrapper.style.marginBottom = "10px";
+  newWrapper.style.marginLeft = "10px";
 
   const newButton = document.createElement("button");
   newButton.textContent = "📋 Planilhas de gerenciamento ▼";
@@ -20794,7 +20796,7 @@ document.addEventListener("DOMContentLoaded", function () {
   dropdown.style.display = "none";
   dropdown.style.flexDirection = "column";
   dropdown.style.position = "absolute";
-  dropdown.style.top = "-100%";
+  dropdown.style.top = "100%";
   dropdown.style.left = "0";
   dropdown.style.background = "#fff";
   dropdown.style.boxShadow = "0 4px 12px rgba(0,0,0,0.1)";
@@ -20846,6 +20848,5 @@ document.addEventListener("DOMContentLoaded", function () {
 
   newWrapper.appendChild(newButton);
   newWrapper.appendChild(dropdown);
-
-  timeFrameBtn.parentNode.insertBefore(newWrapper, timeFrameBtn);
+  targetParent.appendChild(newWrapper);
 });
