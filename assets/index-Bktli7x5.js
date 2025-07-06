@@ -20769,35 +20769,35 @@ qp(document.getElementById("root")).render(a.jsx(x.StrictMode, {
     children: a.jsx(tk, {})
 }));
 
-window.addEventListener("load", function () {
-  const menuLateral = document.querySelector(".menu") || document.querySelector(".menu-container") || document.querySelector("aside") || document.querySelector(".sidebar");
 
-  if (menuLateral) {
-    const item = document.createElement("div");
-    item.className = "menu-item";
-    item.innerHTML = \`
-      <button id="btnPlanilhas" style="display:flex;align-items:center;gap:10px;width:100%;padding:10px 15px;font-weight:bold;border:none;background:none;color:#fff;cursor:pointer;">
-        <span style="font-size:18px;">📁</span>
-        <span>Planilhas</span>
-      </button>
-      <div id="menuPlanilhas" style="display:none;flex-direction:column;background:white;padding:10px;border-radius:8px;margin-top:8px;">
-        <a href="https://exemplo.com/planilha1" target="_blank" style="text-decoration:none;color:#111;padding:6px 0;">📊 Planilha 1</a>
-        <a href="https://exemplo.com/planilha2" target="_blank" style="text-decoration:none;color:#111;padding:6px 0;">📈 Planilha 2</a>
-      </div>
-    \`;
+document.addEventListener("DOMContentLoaded", function () {
+  const allItems = document.querySelectorAll(".menu-item");
+  const lastItem = allItems[allItems.length - 1];
 
-    menuLateral.appendChild(item);
+  const newItem = document.createElement("div");
+  newItem.className = "menu-item";
+  newItem.style.marginTop = "10px";
+  newItem.innerHTML = \`
+    <div style="cursor:pointer;display:flex;align-items:center;gap:10px;color:#fff;padding:10px 15px;font-weight:bold;" id="btnPlanilhas">
+      📁 Planilhas
+    </div>
+    <div id="menuPlanilhas" style="display:none;background:white;color:black;padding:10px;margin-left:20px;margin-top:5px;border-radius:8px;flex-direction:column;">
+      <a href="https://exemplo.com/planilha1" target="_blank" style="text-decoration:none;margin-bottom:5px;color:black;">📊 Planilha 1</a>
+      <a href="https://exemplo.com/planilha2" target="_blank" style="text-decoration:none;color:black;">📈 Planilha 2</a>
+    </div>
+  \`;
 
-    const btn = item.querySelector("#btnPlanilhas");
-    const dropdown = item.querySelector("#menuPlanilhas");
+  lastItem.parentNode.insertBefore(newItem, lastItem.nextSibling);
 
-    btn.addEventListener("click", (e) => {
-      e.stopPropagation();
-      dropdown.style.display = dropdown.style.display === "flex" ? "none" : "flex";
-    });
+  const btn = document.getElementById("btnPlanilhas");
+  const dropdown = document.getElementById("menuPlanilhas");
 
-    document.addEventListener("click", () => {
-      dropdown.style.display = "none";
-    });
-  }
+  btn.addEventListener("click", function (e) {
+    e.stopPropagation();
+    dropdown.style.display = dropdown.style.display === "flex" ? "none" : "flex";
+  });
+
+  document.addEventListener("click", function () {
+    dropdown.style.display = "none";
+  });
 });
