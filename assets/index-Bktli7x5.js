@@ -17974,8 +17974,8 @@ const Zu = [{
             path: "/settings"
         }, {
             icon: spreadsheetIcon,
-            label: t("planilhas"),
-            path: "//planilhas"
+            label: t("settings"),
+            path: "/planilhas"
         }];
 
         return a.jsxs("div", {
