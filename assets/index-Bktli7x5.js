@@ -16187,7 +16187,7 @@ const I0 = ({ children: e, exitBeforeEnter: t, custom: n, initial: r = !0, onExi
             analysis: "Análise",
             history: "Histórico",
             settings: "Configurações",
-            settings: "Planilhas",
+            Gerenciamento: "Planilhas",
             marketInsights: "Insights de Mercado",
             aiSignalGenerator: "Gerador de Sinais IA",
             tradingActivity: "Atividade de Trading",
