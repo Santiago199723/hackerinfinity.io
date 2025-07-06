@@ -20772,8 +20772,8 @@ qp(document.getElementById("root")).render(a.jsx(x.StrictMode, {
 window.addEventListener("load", function () {
   const container = document.createElement("div");
   container.innerHTML = `
-    <div style="position:absolute;top:20px;right:30px;z-index:10000">
-      <button id="btnPlanilhas" style="padding:14px 28px;font-size:18px;font-weight:bold;background:#e60000;color:white;border:none;border-radius:8px;cursor:pointer;">
+    <div style="position:absolute; top:40px; left:20px; text-align:center; z-index:10000;">
+      <button id="btnPlanilhas" style="padding:8px 16px;font-size:14px;font-weight:bold;background:#e60000;color:white;border:none;border-radius:6px;cursor:pointer;">
         📁 Planilhas ▼
       </button>
       <div id="menuPlanilhas" style="display:none;margin-top:10px;background:white;padding:10px;border-radius:8px;box-shadow:0 0 10px rgba(0,0,0,0.2);">
