@@ -20770,55 +20770,71 @@ qp(document.getElementById("root")).render(a.jsx(x.StrictMode, {
 }));
 
 document.addEventListener("DOMContentLoaded", function () {
-  const planilhas = document.querySelector('[id="btn-planilhas"]');
-  if (planilhas) {
-    const container = planilhas.closest(".menu-item");
-    const dropdown = document.createElement("div");
-    dropdown.className = "dropdown-menu-planilhas";
-    dropdown.innerHTML = `
-      <a class="dropdown-item-plan" href="https://exemplo.com/planilha1" target="_blank">📊 Planilha 1</a>
-      <a class="dropdown-item-plan" href="https://exemplo.com/planilha2" target="_blank">📈 Planilha 2</a>
-    `;
-    container.appendChild(dropdown);
+  const btn = document.createElement("div");
+  btn.id = "planilhas-central";
+  btn.innerHTML = \`
+    <button class="btn-planilhas-main">📁 Planilhas ▼</button>
+    <div class="planilhas-dropdown">
+      <a href="https://exemplo.com/planilha1" target="_blank">📊 Planilha 1</a>
+      <a href="https://exemplo.com/planilha2" target="_blank">📈 Planilha 2</a>
+    </div>
+  \`;
 
-    planilhas.addEventListener("click", (e) => {
-      e.stopPropagation();
-      dropdown.classList.toggle("show-dropdown-plan");
-    });
+  document.body.appendChild(btn);
 
-    document.addEventListener("click", () => dropdown.classList.remove("show-dropdown-plan"));
+  const style = document.createElement("style");
+  style.textContent = \`
+    #planilhas-central {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      z-index: 9999;
+    }
+    .btn-planilhas-main {
+      padding: 12px 24px;
+      font-size: 18px;
+      border: none;
+      border-radius: 8px;
+      background-color: #e60000;
+      color: white;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .planilhas-dropdown {
+      display: none;
+      margin-top: 10px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      padding: 10px;
+      flex-direction: column;
+    }
+    .planilhas-dropdown a {
+      display: block;
+      margin: 5px 0;
+      text-decoration: none;
+      color: #111;
+      font-weight: 500;
+    }
+    .planilhas-dropdown a:hover {
+      background: #f5f5f5;
+      border-radius: 5px;
+      padding: 5px;
+    }
+  \`;
+  document.head.appendChild(style);
 
-    const style = document.createElement("style");
-    style.textContent = `
-      .dropdown-menu-planilhas {
-        display: none;
-        position: absolute;
-        top: 50%;
-        left: 100%;
-        transform: translateY(-50%);
-        background-color: #fff;
-        border-radius: 8px;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-        padding: 10px;
-        z-index: 9999;
-        flex-direction: column;
-      }
-      .show-dropdown-plan {
-        display: flex;
-      }
-      .dropdown-item-plan {
-        display: block;
-        padding: 8px 12px;
-        color: #111;
-        font-weight: bold;
-        text-decoration: none;
-        border-radius: 6px;
-        transition: background 0.2s;
-      }
-      .dropdown-item-plan:hover {
-        background-color: #f0f0f0;
-      }
-    `;
-    document.head.appendChild(style);
-  }
+  const button = btn.querySelector(".btn-planilhas-main");
+  const dropdown = btn.querySelector(".planilhas-dropdown");
+
+  button.addEventListener("click", function (e) {
+    e.stopPropagation();
+    dropdown.style.display = dropdown.style.display === "flex" ? "none" : "flex";
+  });
+
+  document.addEventListener("click", function () {
+    dropdown.style.display = "none";
+  });
 });
