@@ -20769,39 +20769,70 @@ qp(document.getElementById("root")).render(a.jsx(x.StrictMode, {
     children: a.jsx(tk, {})
 }));
 
-window.addEventListener("load", function () {
-  const container = document.createElement("div");
-  container.innerHTML = `
-    <div style="position:absolute; top:20px; right:120px; z-index:10000; display:flex; flex-direction:column; align-items:flex-end;">
-      <button id="btnPlanilhas" style="padding:8px 16px;font-size:14px;font-weight:bold;background:#e60000;color:white;border:none;border-radius:6px;cursor:pointer;transition:background 0.3s;">
-        📁 Planilhas ▼
-      </button>
-      <div id="menuPlanilhas" style="display:none;margin-top:10px;background:white;padding:10px;border-radius:8px;box-shadow:0 0 10px rgba(0,0,0,0.2);">
-        <a href="https://exemplo.com/planilha1" target="_blank" style="display:block;margin-bottom:8px;text-decoration:none;font-weight:500;color:#111;">📊 Planilha 1</a>
-        <a href="https://exemplo.com/planilha2" target="_blank" style="display:block;text-decoration:none;font-weight:500;color:#111;">📈 Planilha 2</a>
-      </div>
-    </div>
+
+document.addEventListener("DOMContentLoaded", function () {
+  const langBtn = Array.from(document.querySelectorAll("div"))
+    .find(el => el.textContent.trim() === "PT");
+
+  if (!langBtn || !langBtn.parentNode) return;
+
+  const wrapper = langBtn.parentNode;
+
+  const planilhasWrapper = document.createElement("div");
+  planilhasWrapper.style.position = "relative";
+  planilhasWrapper.style.marginLeft = "12px";
+
+  const btn = document.createElement("button");
+  btn.textContent = "📁 Planilhas ▼";
+  btn.style.padding = "8px 12px";
+  btn.style.fontSize = "14px";
+  btn.style.fontWeight = "bold";
+  btn.style.background = "#e60000";
+  btn.style.color = "white";
+  btn.style.border = "none";
+  btn.style.borderRadius = "6px";
+  btn.style.cursor = "pointer";
+
+  const menu = document.createElement("div");
+  menu.style.position = "absolute";
+  menu.style.top = "100%";
+  menu.style.right = "0";
+  menu.style.background = "white";
+  menu.style.display = "none";
+  menu.style.flexDirection = "column";
+  menu.style.marginTop = "5px";
+  menu.style.borderRadius = "8px";
+  menu.style.boxShadow = "0 4px 12px rgba(0,0,0,0.15)";
+  menu.style.zIndex = "9999";
+  menu.style.minWidth = "150px";
+  menu.innerHTML = `
+    <a href="https://exemplo.com/planilha1" target="_blank"
+       style="padding:10px 15px;text-decoration:none;color:#111;transition:background 0.3s;border-radius:6px;">📊 Planilha 1</a>
+    <a href="https://exemplo.com/planilha2" target="_blank"
+       style="padding:10px 15px;text-decoration:none;color:#111;transition:background 0.3s;border-radius:6px;">📈 Planilha 2</a>
   `;
-  document.body.appendChild(container);
 
-  const btn = document.getElementById("btnPlanilhas");
-  const menu = document.getElementById("menuPlanilhas");
+  // Hover effect
+  menu.querySelectorAll("a").forEach(link => {
+    link.addEventListener("mouseover", () => {
+      link.style.background = "#f2f2f2";
+    });
+    link.addEventListener("mouseout", () => {
+      link.style.background = "transparent";
+    });
+  });
 
-  btn.addEventListener("click", (e) => {
+  // Toggle menu
+  btn.addEventListener("click", e => {
     e.stopPropagation();
-    menu.style.display = menu.style.display === "block" ? "none" : "block";
+    menu.style.display = menu.style.display === "flex" ? "none" : "flex";
   });
 
   document.addEventListener("click", () => {
     menu.style.display = "none";
   });
-});
 
-document.querySelectorAll('#menuPlanilhas a').forEach(item => {
-  item.addEventListener('mouseover', () => {
-    item.style.background = '#f0f0f0';
-  });
-  item.addEventListener('mouseout', () => {
-    item.style.background = 'transparent';
-  });
+  planilhasWrapper.appendChild(btn);
+  planilhasWrapper.appendChild(menu);
+  wrapper.appendChild(planilhasWrapper);
 });
