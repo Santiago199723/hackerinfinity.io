@@ -17973,9 +17973,9 @@ const Zu = [{
             label: t("settings"),
             path: "/settings"
         }, {
-            icon: qu,
-            label: t("settings"),
-            path: "/settings"
+            icon: spreadsheetIcon,
+            label: t("planilhas"),
+            path: "//planilhas"
         }];
 
         return a.jsxs("div", {
@@ -20738,7 +20738,7 @@ function tk() {
                     path: "/settings",
                     element: a.jsx(ek, {})
                 }), a.jsx(xn, {
-                    path: "/settings",
+                    path: "/planilhas",
                     element: a.jsx(ek, {})
                 })]
 
