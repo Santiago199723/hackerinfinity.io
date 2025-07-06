@@ -20769,72 +20769,30 @@ qp(document.getElementById("root")).render(a.jsx(x.StrictMode, {
     children: a.jsx(tk, {})
 }));
 
-document.addEventListener("DOMContentLoaded", function () {
-  const btn = document.createElement("div");
-  btn.id = "planilhas-central";
-  btn.innerHTML = \`
-    <button class="btn-planilhas-main">📁 Planilhas ▼</button>
-    <div class="planilhas-dropdown">
-      <a href="https://exemplo.com/planilha1" target="_blank">📊 Planilha 1</a>
-      <a href="https://exemplo.com/planilha2" target="_blank">📈 Planilha 2</a>
+window.addEventListener("load", function () {
+  const container = document.createElement("div");
+  container.innerHTML = `
+    <div style="position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;z-index:10000;">
+      <button id="btnPlanilhas" style="padding:14px 28px;font-size:18px;font-weight:bold;background:#e60000;color:white;border:none;border-radius:8px;cursor:pointer;">
+        📁 Planilhas ▼
+      </button>
+      <div id="menuPlanilhas" style="display:none;margin-top:10px;background:white;padding:10px;border-radius:8px;box-shadow:0 0 10px rgba(0,0,0,0.2);">
+        <a href="https://exemplo.com/planilha1" target="_blank" style="display:block;margin-bottom:8px;text-decoration:none;font-weight:500;color:#111;">📊 Planilha 1</a>
+        <a href="https://exemplo.com/planilha2" target="_blank" style="display:block;text-decoration:none;font-weight:500;color:#111;">📈 Planilha 2</a>
+      </div>
     </div>
-  \`;
+  `;
+  document.body.appendChild(container);
 
-  document.body.appendChild(btn);
+  const btn = document.getElementById("btnPlanilhas");
+  const menu = document.getElementById("menuPlanilhas");
 
-  const style = document.createElement("style");
-  style.textContent = \`
-    #planilhas-central {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      text-align: center;
-      z-index: 9999;
-    }
-    .btn-planilhas-main {
-      padding: 12px 24px;
-      font-size: 18px;
-      border: none;
-      border-radius: 8px;
-      background-color: #e60000;
-      color: white;
-      cursor: pointer;
-      font-weight: bold;
-    }
-    .planilhas-dropdown {
-      display: none;
-      margin-top: 10px;
-      background: white;
-      border-radius: 8px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      padding: 10px;
-      flex-direction: column;
-    }
-    .planilhas-dropdown a {
-      display: block;
-      margin: 5px 0;
-      text-decoration: none;
-      color: #111;
-      font-weight: 500;
-    }
-    .planilhas-dropdown a:hover {
-      background: #f5f5f5;
-      border-radius: 5px;
-      padding: 5px;
-    }
-  \`;
-  document.head.appendChild(style);
-
-  const button = btn.querySelector(".btn-planilhas-main");
-  const dropdown = btn.querySelector(".planilhas-dropdown");
-
-  button.addEventListener("click", function (e) {
+  btn.addEventListener("click", (e) => {
     e.stopPropagation();
-    dropdown.style.display = dropdown.style.display === "flex" ? "none" : "flex";
+    menu.style.display = menu.style.display === "block" ? "none" : "block";
   });
 
-  document.addEventListener("click", function () {
-    dropdown.style.display = "none";
+  document.addEventListener("click", () => {
+    menu.style.display = "none";
   });
 });
