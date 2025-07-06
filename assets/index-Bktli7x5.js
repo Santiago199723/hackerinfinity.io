@@ -20769,70 +20769,83 @@ qp(document.getElementById("root")).render(a.jsx(x.StrictMode, {
     children: a.jsx(tk, {})
 }));
 
-
 document.addEventListener("DOMContentLoaded", function () {
-  const langBtn = Array.from(document.querySelectorAll("div"))
-    .find(el => el.textContent.trim() === "PT");
+  const allDivs = Array.from(document.querySelectorAll("div"));
+  const timeFrameBtn = allDivs.find(div => div.textContent.trim().toLowerCase().includes("frame"));
 
-  if (!langBtn || !langBtn.parentNode) return;
+  if (!timeFrameBtn) return;
 
-  const wrapper = langBtn.parentNode;
+  const newWrapper = document.createElement("div");
+  newWrapper.style.position = "relative";
+  newWrapper.style.marginBottom = "10px";
 
-  const planilhasWrapper = document.createElement("div");
-  planilhasWrapper.style.position = "relative";
-  planilhasWrapper.style.marginLeft = "12px";
+  const newButton = document.createElement("button");
+  newButton.textContent = "📋 Planilhas de gerenciamento ▼";
+  newButton.style.padding = "8px 14px";
+  newButton.style.fontSize = "14px";
+  newButton.style.fontWeight = "bold";
+  newButton.style.background = "#e60000";
+  newButton.style.color = "white";
+  newButton.style.border = "none";
+  newButton.style.borderRadius = "6px";
+  newButton.style.cursor = "pointer";
 
-  const btn = document.createElement("button");
-  btn.textContent = "📁 Planilhas ▼";
-  btn.style.padding = "8px 12px";
-  btn.style.fontSize = "14px";
-  btn.style.fontWeight = "bold";
-  btn.style.background = "#e60000";
-  btn.style.color = "white";
-  btn.style.border = "none";
-  btn.style.borderRadius = "6px";
-  btn.style.cursor = "pointer";
+  const dropdown = document.createElement("div");
+  dropdown.style.display = "none";
+  dropdown.style.flexDirection = "column";
+  dropdown.style.position = "absolute";
+  dropdown.style.top = "-100%";
+  dropdown.style.left = "0";
+  dropdown.style.background = "#fff";
+  dropdown.style.boxShadow = "0 4px 12px rgba(0,0,0,0.1)";
+  dropdown.style.borderRadius = "8px";
+  dropdown.style.minWidth = "180px";
+  dropdown.style.padding = "10px";
+  dropdown.style.zIndex = "9999";
 
-  const menu = document.createElement("div");
-  menu.style.position = "absolute";
-  menu.style.top = "100%";
-  menu.style.right = "0";
-  menu.style.background = "white";
-  menu.style.display = "none";
-  menu.style.flexDirection = "column";
-  menu.style.marginTop = "5px";
-  menu.style.borderRadius = "8px";
-  menu.style.boxShadow = "0 4px 12px rgba(0,0,0,0.15)";
-  menu.style.zIndex = "9999";
-  menu.style.minWidth = "150px";
-  menu.innerHTML = `
-    <a href="https://exemplo.com/planilha1" target="_blank"
-       style="padding:10px 15px;text-decoration:none;color:#111;transition:background 0.3s;border-radius:6px;">📊 Planilha 1</a>
-    <a href="https://exemplo.com/planilha2" target="_blank"
-       style="padding:10px 15px;text-decoration:none;color:#111;transition:background 0.3s;border-radius:6px;">📈 Planilha 2</a>
-  `;
+  const vip1 = document.createElement("a");
+  vip1.href = "https://exemplo.com/vip1";
+  vip1.target = "_blank";
+  vip1.textContent = "VIP 1";
+  vip1.style.padding = "8px 10px";
+  vip1.style.textDecoration = "none";
+  vip1.style.color = "#111";
+  vip1.style.borderRadius = "5px";
+  vip1.style.transition = "background 0.2s";
 
-  // Hover effect
-  menu.querySelectorAll("a").forEach(link => {
+  const vip2 = document.createElement("a");
+  vip2.href = "https://exemplo.com/vip2";
+  vip2.target = "_blank";
+  vip2.textContent = "VIP 2";
+  vip2.style.padding = "8px 10px";
+  vip2.style.textDecoration = "none";
+  vip2.style.color = "#111";
+  vip2.style.borderRadius = "5px";
+  vip2.style.transition = "background 0.2s";
+
+  [vip1, vip2].forEach(link => {
     link.addEventListener("mouseover", () => {
-      link.style.background = "#f2f2f2";
+      link.style.background = "#f0f0f0";
     });
     link.addEventListener("mouseout", () => {
       link.style.background = "transparent";
     });
   });
 
-  // Toggle menu
-  btn.addEventListener("click", e => {
+  dropdown.appendChild(vip1);
+  dropdown.appendChild(vip2);
+
+  newButton.addEventListener("click", (e) => {
     e.stopPropagation();
-    menu.style.display = menu.style.display === "flex" ? "none" : "flex";
+    dropdown.style.display = dropdown.style.display === "flex" ? "none" : "flex";
   });
 
   document.addEventListener("click", () => {
-    menu.style.display = "none";
+    dropdown.style.display = "none";
   });
 
-  planilhasWrapper.appendChild(btn);
-  planilhasWrapper.appendChild(menu);
-  wrapper.appendChild(planilhasWrapper);
+  newWrapper.appendChild(newButton);
+  newWrapper.appendChild(dropdown);
+
+  timeFrameBtn.parentNode.insertBefore(newWrapper, timeFrameBtn);
 });
