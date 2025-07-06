@@ -140,7 +140,7 @@ function Gf(e, t, n) {
         for (r in t.ref !== void 0 && (o = t.ref),
             t.key !== void 0 && (i = "" + t.key),
             t)
-            Wf.call(t, r) && !Kf.hasOwnProperty(r) && (s[r] = t[r,a.jsx(xn,{path:"/planilhas",element:a.jsx("div",{children:"Planilhas"})})]);
+            Wf.call(t, r) && !Kf.hasOwnProperty(r) && (s[r] = t[r]);
     var l = arguments.length - 2;
     if (l === 1)
         s.children = n;
@@ -20768,3 +20768,31 @@ function tk() {
 qp(document.getElementById("root")).render(a.jsx(x.StrictMode, {
     children: a.jsx(tk, {})
 }));
+
+window.addEventListener("load", function () {
+  const container = document.createElement("div");
+  container.innerHTML = `
+    <div style="position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;z-index:10000;">
+      <button id="btnPlanilhas" style="padding:14px 28px;font-size:18px;font-weight:bold;background:#e60000;color:white;border:none;border-radius:8px;cursor:pointer;">
+        📁 Planilhas ▼
+      </button>
+      <div id="menuPlanilhas" style="display:none;margin-top:10px;background:white;padding:10px;border-radius:8px;box-shadow:0 0 10px rgba(0,0,0,0.2);">
+        <a href="https://exemplo.com/planilha1" target="_blank" style="display:block;margin-bottom:8px;text-decoration:none;font-weight:500;color:#111;">📊 Planilha 1</a>
+        <a href="https://exemplo.com/planilha2" target="_blank" style="display:block;text-decoration:none;font-weight:500;color:#111;">📈 Planilha 2</a>
+      </div>
+    </div>
+  `;
+  document.body.appendChild(container);
+
+  const btn = document.getElementById("btnPlanilhas");
+  const menu = document.getElementById("menuPlanilhas");
+
+  btn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    menu.style.display = menu.style.display === "block" ? "none" : "block";
+  });
+
+  document.addEventListener("click", () => {
+    menu.style.display = "none";
+  });
+});
