@@ -17971,7 +17971,12 @@ const Zu = [{
             }, {
                 icon: qu,
                 label: t("settings"),
+                path: "/settings"},
+                {
+                icon: qu,
+                label: t("settings"),
                 path: "/settings"
+            
             }];
         return a.jsxs("div", {
             className: "w-20 h-screen bg-[#13141C] border-r border-[#1E2030] flex flex-col items-center py-6 fixed",
@@ -18379,6 +18384,11 @@ const Zu = [{
                         className: "w-full flex items-center justify-between p-3 text-gray-300 hover:bg-[#252935] rounded-xl",
                         children: a.jsx("span", {
                             children: r("history")
+                        })
+                    }), a.jsx("button", {
+                        className: "w-full flex items-center justify-between p-3 text-gray-300 hover:bg-[#252935] rounded-xl",
+                        children: a.jsx("span", {
+                            children: r("settings")
                         })
                     }), a.jsx("button", {
                         className: "w-full flex items-center justify-between p-3 text-gray-300 hover:bg-[#252935] rounded-xl",
@@ -19166,7 +19176,12 @@ const Wj = ({ asset: e }) => {
             }, {
                 icon: qu,
                 label: t("settings"),
+                path: "/settings"}, 
+                {
+                icon: qu,
+                label: t("settings"),
                 path: "/settings"
+
             }];
 
         return a.jsx("div", {
@@ -20729,6 +20744,10 @@ function tk() {
                         }), a.jsx(xn, {
                             path: "/history",
                             element: a.jsx(Zj, {})
+                        }), a.jsx(xn, {
+                            path: "/settings",
+                            element: a.jsx(ek, {})
+                        })]
                         }), a.jsx(xn, {
                             path: "/settings",
                             element: a.jsx(ek, {})
