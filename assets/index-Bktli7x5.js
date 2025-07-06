@@ -20772,7 +20772,7 @@ qp(document.getElementById("root")).render(a.jsx(x.StrictMode, {
 window.addEventListener("load", function () {
   const container = document.createElement("div");
   container.innerHTML = `
-    <div style="position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;z-index:10000;">
+    <div style="position:absolute;top:20px;right:30px;z-index:10000">
       <button id="btnPlanilhas" style="padding:14px 28px;font-size:18px;font-weight:bold;background:#e60000;color:white;border:none;border-radius:8px;cursor:pointer;">
         📁 Planilhas ▼
       </button>
