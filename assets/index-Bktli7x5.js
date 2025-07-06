@@ -140,7 +140,7 @@ function Gf(e, t, n) {
         for (r in t.ref !== void 0 && (o = t.ref),
             t.key !== void 0 && (i = "" + t.key),
             t)
-            Wf.call(t, r) && !Kf.hasOwnProperty(r) && (s[r] = t[r]);
+            Wf.call(t, r) && !Kf.hasOwnProperty(r) && (s[r] = t[r,a.jsx(xn,{path:"/planilhas",element:a.jsx("div",{children:"Planilhas"})})]);
     var l = arguments.length - 2;
     if (l === 1)
         s.children = n;
@@ -20768,36 +20768,3 @@ function tk() {
 qp(document.getElementById("root")).render(a.jsx(x.StrictMode, {
     children: a.jsx(tk, {})
 }));
-
-
-document.addEventListener("DOMContentLoaded", function () {
-  const allItems = document.querySelectorAll(".menu-item");
-  const lastItem = allItems[allItems.length - 1];
-
-  const newItem = document.createElement("div");
-  newItem.className = "menu-item";
-  newItem.style.marginTop = "10px";
-  newItem.innerHTML = \`
-    <div style="cursor:pointer;display:flex;align-items:center;gap:10px;color:#fff;padding:10px 15px;font-weight:bold;" id="btnPlanilhas">
-      📁 Planilhas
-    </div>
-    <div id="menuPlanilhas" style="display:none;background:white;color:black;padding:10px;margin-left:20px;margin-top:5px;border-radius:8px;flex-direction:column;">
-      <a href="https://exemplo.com/planilha1" target="_blank" style="text-decoration:none;margin-bottom:5px;color:black;">📊 Planilha 1</a>
-      <a href="https://exemplo.com/planilha2" target="_blank" style="text-decoration:none;color:black;">📈 Planilha 2</a>
-    </div>
-  \`;
-
-  lastItem.parentNode.insertBefore(newItem, lastItem.nextSibling);
-
-  const btn = document.getElementById("btnPlanilhas");
-  const dropdown = document.getElementById("menuPlanilhas");
-
-  btn.addEventListener("click", function (e) {
-    e.stopPropagation();
-    dropdown.style.display = dropdown.style.display === "flex" ? "none" : "flex";
-  });
-
-  document.addEventListener("click", function () {
-    dropdown.style.display = "none";
-  });
-});
