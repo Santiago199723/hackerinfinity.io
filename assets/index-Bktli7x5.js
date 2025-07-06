@@ -17953,26 +17953,31 @@ const Zu = [{
     icon: "Ws"
 }]
 
-    , vs = () => {
-        const e = rr()
-            , { t } = ue()
-            , n = [{
-                icon: G0,
-                label: t("dashboard"),
-                path: "/"
-            }, {
-                icon: po,
-                label: t("analysis"),
-                path: "/analysis"
-            }, {
-                icon: K0,
-                label: t("history"),
-                path: "/history"
-            }, {
-                icon: qu,
-                label: t("settings"),
-                path: "/settings"
-            }];
+, vs = () => {
+    const e = rr()
+        , { t } = ue()
+        , n = [{
+            icon: G0,
+            label: t("dashboard"),
+            path: "/"
+        }, {
+            icon: po,
+            label: t("analysis"),
+            path: "/analysis"
+        }, {
+            icon: K0,
+            label: t("history"),
+            path: "/history"
+        }, {
+            icon: qu,
+            label: t("settings"),
+            path: "/settings"
+        }, {
+            icon: qu,
+            label: t("settings"),
+            path: "/settings"
+        }];
+
         return a.jsxs("div", {
             className: "w-20 h-screen bg-[#13141C] border-r border-[#1E2030] flex flex-col items-center py-6 fixed",
             children: [a.jsx("div", {
@@ -20723,16 +20728,20 @@ function tk() {
                                 onAssetSelect: l,
                                 onAnalyze: d
                             })
-                        }), a.jsx(xn, {
-                            path: "/analysis",
-                            element: a.jsx(qj, {})
-                        }), a.jsx(xn, {
-                            path: "/history",
-                            element: a.jsx(Zj, {})
-                        }), a.jsx(xn, {
-                            path: "/settings",
-                            element: a.jsx(ek, {})
-                        })]
+                       }), a.jsx(xn, {
+                        path: "/analysis",
+                        element: a.jsx(qj, {})
+                    }), a.jsx(xn, {
+                        path: "/history",
+                        element: a.jsx(Zj, {})
+                    }), a.jsx(xn, {
+                        path: "/settings",
+                        element: a.jsx(ek, {})
+                    }), a.jsx(xn, {
+                        path: "/settings",
+                        element: a.jsx(ek, {})
+                    })]
+
                     }), a.jsxs(I0, {
                         children: [n && a.jsx(tg, {
                             onClose: () => r(!1)
