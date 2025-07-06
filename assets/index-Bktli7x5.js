@@ -20738,7 +20738,7 @@ function tk() {
                     path: "/settings",
                     element: a.jsx(ek, {})
                 }), a.jsx(xn, {
-                    path: "/planilhas",
+                    path: "/settings",
                     element: a.jsx(ek, {})
                 })]
 
