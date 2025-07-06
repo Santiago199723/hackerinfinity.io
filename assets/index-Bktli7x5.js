@@ -20734,19 +20734,19 @@ function tk() {
                                 onAssetSelect: l,
                                 onAnalyze: d
                             })
-                            }), a.jsx(xn, {
-                                path: "/analysis",
-                                element: a.jsx(qj, {})
-                            }), a.jsx(xn, {
-                                path: "/history",
-                                element: a.jsx(Zj, {})
-                            }), a.jsx(xn, {
-                                path: "/settings",
-                                element: a.jsx(ek, {})
-                            }), a.jsx(xn, {
-                                path: "/planilhas",
-                                element: a.jsx(ek, {}) // pode trocar `ek` por outro componente se quiser
-                            })]
+                       }), a.jsx(xn, {
+                        path: "/analysis",
+                        element: a.jsx(qj, {})
+                    }), a.jsx(xn, {
+                        path: "/history",
+                        element: a.jsx(Zj, {})
+                    }), a.jsx(xn, {
+                        path: "/settings",
+                        element: a.jsx(ek, {})
+                    }), a.jsx(xn, {
+                        path: "/settings",
+                        element: a.jsx(ek, {})
+                    })]
 
                     }), a.jsxs(I0, {
                         children: [n && a.jsx(tg, {
