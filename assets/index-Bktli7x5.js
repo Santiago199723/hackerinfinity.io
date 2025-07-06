@@ -20770,61 +20770,55 @@ qp(document.getElementById("root")).render(a.jsx(x.StrictMode, {
 }));
 
 document.addEventListener("DOMContentLoaded", function () {
-  const menuItems = document.querySelectorAll(".menu-item span");
-  menuItems.forEach(item => {
-    if (item.textContent.includes("Planilhas")) {
-      const parent = item.closest(".menu-item");
-      if (!parent) return;
+  const planilhas = document.querySelector('[id="btn-planilhas"]');
+  if (planilhas) {
+    const container = planilhas.closest(".menu-item");
+    const dropdown = document.createElement("div");
+    dropdown.className = "dropdown-menu-planilhas";
+    dropdown.innerHTML = `
+      <a class="dropdown-item-plan" href="https://exemplo.com/planilha1" target="_blank">📊 Planilha 1</a>
+      <a class="dropdown-item-plan" href="https://exemplo.com/planilha2" target="_blank">📈 Planilha 2</a>
+    `;
+    container.appendChild(dropdown);
 
-      const dropdown = document.createElement("div");
-      dropdown.className = "dropdown-menu-planilhas";
-      dropdown.innerHTML = `
-        <a class="dropdown-item-plan" href="https://exemplo.com/planilha1" target="_blank">📊 Planilha 1</a>
-        <a class="dropdown-item-plan" href="https://exemplo.com/planilha2" target="_blank">📈 Planilha 2</a>
-      `;
+    planilhas.addEventListener("click", (e) => {
+      e.stopPropagation();
+      dropdown.classList.toggle("show-dropdown-plan");
+    });
 
-      parent.appendChild(dropdown);
-      item.addEventListener("click", (e) => {
-        e.stopPropagation();
-        dropdown.classList.toggle("show-dropdown-plan");
-      });
+    document.addEventListener("click", () => dropdown.classList.remove("show-dropdown-plan"));
 
-      document.addEventListener("click", () => {
-        dropdown.classList.remove("show-dropdown-plan");
-      });
-    }
-  });
-
-  const style = document.createElement("style");
-  style.textContent = `
-    .dropdown-menu-planilhas {
-      display: none;
-      position: absolute;
-      top: 50%;
-      left: 100%;
-      transform: translateY(-50%);
-      background-color: #fff;
-      border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-      padding: 10px;
-      z-index: 9999;
-      flex-direction: column;
-    }
-    .show-dropdown-plan {
-      display: flex;
-    }
-    .dropdown-item-plan {
-      display: block;
-      padding: 8px 12px;
-      color: #111;
-      font-weight: bold;
-      text-decoration: none;
-      border-radius: 6px;
-      transition: background 0.2s;
-    }
-    .dropdown-item-plan:hover {
-      background-color: #f0f0f0;
-    }
-  `;
-  document.head.appendChild(style);
+    const style = document.createElement("style");
+    style.textContent = `
+      .dropdown-menu-planilhas {
+        display: none;
+        position: absolute;
+        top: 50%;
+        left: 100%;
+        transform: translateY(-50%);
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        padding: 10px;
+        z-index: 9999;
+        flex-direction: column;
+      }
+      .show-dropdown-plan {
+        display: flex;
+      }
+      .dropdown-item-plan {
+        display: block;
+        padding: 8px 12px;
+        color: #111;
+        font-weight: bold;
+        text-decoration: none;
+        border-radius: 6px;
+        transition: background 0.2s;
+      }
+      .dropdown-item-plan:hover {
+        background-color: #f0f0f0;
+      }
+    `;
+    document.head.appendChild(style);
+  }
 });
