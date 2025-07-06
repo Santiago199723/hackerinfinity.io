@@ -20769,58 +20769,61 @@ qp(document.getElementById("root")).render(a.jsx(x.StrictMode, {
     children: a.jsx(tk, {})
 }));
 
-/* DROPDOWN MENU DE PLANILHAS */
 document.addEventListener("DOMContentLoaded", function () {
   const menuItems = document.querySelectorAll(".menu-item span");
   menuItems.forEach(item => {
     if (item.textContent.includes("Planilhas")) {
-      item.parentElement.classList.add("menu-planilhas");
-      const dropdown = document.createElement("div");
-      dropdown.className = "dropdown";
-      dropdown.innerHTML = `
-        <a class="dropdown-item" href="https://exemplo.com/planilha1" target="_blank">📊 Planilha 1</a>
-        <a class="dropdown-item" href="https://exemplo.com/planilha2" target="_blank">📈 Planilha 2</a>
-      `;
-      item.parentElement.appendChild(dropdown);
+      const parent = item.closest(".menu-item");
+      if (!parent) return;
 
+      const dropdown = document.createElement("div");
+      dropdown.className = "dropdown-menu-planilhas";
+      dropdown.innerHTML = `
+        <a class="dropdown-item-plan" href="https://exemplo.com/planilha1" target="_blank">📊 Planilha 1</a>
+        <a class="dropdown-item-plan" href="https://exemplo.com/planilha2" target="_blank">📈 Planilha 2</a>
+      `;
+
+      parent.appendChild(dropdown);
       item.addEventListener("click", (e) => {
         e.stopPropagation();
-        dropdown.classList.toggle("show");
+        dropdown.classList.toggle("show-dropdown-plan");
       });
 
-      document.addEventListener("click", () => dropdown.classList.remove("show"));
+      document.addEventListener("click", () => {
+        dropdown.classList.remove("show-dropdown-plan");
+      });
     }
   });
 
   const style = document.createElement("style");
   style.textContent = `
-    .menu-planilhas { position: relative; }
-    .dropdown {
+    .dropdown-menu-planilhas {
       display: none;
-      flex-direction: column;
       position: absolute;
+      top: 50%;
       left: 100%;
-      top: 0;
-      background: white;
-      border: 1px solid #ccc;
+      transform: translateY(-50%);
+      background-color: #fff;
       border-radius: 8px;
-      padding: 8px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      z-index: 1000;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      padding: 10px;
+      z-index: 9999;
+      flex-direction: column;
     }
-    .dropdown.show {
+    .show-dropdown-plan {
       display: flex;
     }
-    .dropdown-item {
-      padding: 6px 10px;
+    .dropdown-item-plan {
+      display: block;
+      padding: 8px 12px;
+      color: #111;
+      font-weight: bold;
       text-decoration: none;
-      color: #333;
-      font-weight: 500;
-      border-radius: 4px;
+      border-radius: 6px;
       transition: background 0.2s;
     }
-    .dropdown-item:hover {
-      background: #f0f0f0;
+    .dropdown-item-plan:hover {
+      background-color: #f0f0f0;
     }
   `;
   document.head.appendChild(style);
