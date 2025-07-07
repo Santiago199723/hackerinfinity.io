@@ -18805,27 +18805,18 @@ const [showPlanilhaMenu, setShowPlanilhaMenu] = x.useState(false);
                                 }),
 
                                 // Botão 2
-
-                                // Botão Planilhas
+                                // Botão Planilhas (replica do Timeframe)
                                 a.jsx("div", {
                                     className: "relative",
                                     children: [
                                         a.jsx("button", {
                                             style: {
-                                                backgroundColor: "#b30000",
-                                                color: "white",
-                                                padding: "8px 16px",
-                                                fontSize: "14px",
-                                                cursor: "pointer",
-                                                border: "1px solid #ff3333",
-                                                borderRadius: "5px",
-                                                display: "flex",
-                                                alignItems: "center",
-                                                justifyContent: "center",
-                                                transition: "all 0.3s ease",
-                                                boxShadow: "0 0 10px #ff1a1a, 0 0 20px #ff1a1a",
-                                                marginTop: "4px"
-                                            },
+backgroundColor: "#b30000",
+transition: "all 0.3s ease",
+boxShadow: "0 0 10px #ff1a1a, 0 0 20px #ff1a1a",
+border: "1px solid #ff3333",
+marginLeft: "0px",
+},
                                             onClick: () => setShowPlanilhaMenu(!showPlanilhaMenu),
                                             children: [
                                                 a.jsx("i", {
@@ -18891,12 +18882,6 @@ const [showPlanilhaMenu, setShowPlanilhaMenu] = x.useState(false);
                                                     },
                                                     children: planilha.label
                                                 })
-                                            )
-                                        })
-                                    ]
-                                }),
-
-                                
                                             )
                                         })
                                     ]
