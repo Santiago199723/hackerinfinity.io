@@ -18718,11 +18718,10 @@ const [showPlanilhaMenu, setShowPlanilhaMenu] = x.useState(false);
                             className: "w-full h-full object-contain"
                         }),
 
-                        // Botões lado a lado
-                        a.jsxs("div", {
+                                                a.jsxs("div", {
                             className: "flex flex-row space-x-4",
                             children: [
-                                // Botão 1
+// Botão 1
                                 a.jsx("div", {
                                     className: "relative",
                                     children: [
@@ -18802,11 +18801,9 @@ const [showPlanilhaMenu, setShowPlanilhaMenu] = x.useState(false);
                                             )
                                         })
                                     ]
-                                }),
+                                }),,
 
- 
-
-                                a.jsx("div", {
+a.jsx("div", {
                                     className: "relative",
                                     children: [
                                         a.jsx("button", {
@@ -18821,8 +18818,6 @@ const [showPlanilhaMenu, setShowPlanilhaMenu] = x.useState(false);
                                                 display: "flex",
                                                 alignItems: "center",
                                                 justifyContent: "center",
-
-                                                
                                             },
                                             onClick: () => setShowMenu2(!showMenu2),
                                             children: [
@@ -18842,20 +18837,64 @@ const [showPlanilhaMenu, setShowPlanilhaMenu] = x.useState(false);
                                                 })
                                             ]
                                         }),
+                                        showMenu2 && a.jsx("div", {
+                                            style: {
+                                                position: 'absolute',
+                                                backgroundColor: "#f0f0f0",
+                                                width: "200px",
+                                                boxShadow: "0px 8px 16px 0px rgba(0,0,0,0.2)",
+                                                zIndex: "1",
+                                                borderRadius: "5px",
+                                                top: '100%',
+                                                left: '50%',
+                                                transform: 'translateX(-50%)',
+                                                marginTop: '8px'
+                                            },
+                                            children: corretoras2.map(corretora =>
+                                                a.jsx("a", {
+                                                    href: "#",
+                                                    style: {
+                                                        display: "block",
+                                                        padding: "12px 16px",
+                                                        textDecoration: "none",
+                                                        color: "black",
+                                                        fontSize: "14px",
+                                                        textAlign: "center",
+                                                        borderBottom: "1px solid #ddd"
+                                                    },
+                                                    onMouseOver: (e) => {
+                                                        e.target.style.backgroundColor = "#b31d22";
+                                                        e.target.style.color = "white";
+                                                        e.target.style.transform = "scale(1.05)";
+                                                    },
+                                                    onMouseOut: (e) => {
+                                                        e.target.style.backgroundColor = "transparent";
+                                                        e.target.style.color = "black";
+                                                        e.target.style.transform = "scale(1)";
+                                                    },
+                                                    onClick: (e) => {
+                                                        e.preventDefault();
+                                                        setSelectedBroker2(corretora);
+                                                        setShowMenu2(false);
+                                                    },
+                                                    children: corretora
+                                                })
+                                            )
+                                        })
+                                    ]
+                                }),,
 
-                                                                       // Botão 2
-                                // Botão Planilhas (replica do Timeframe)
-                                a.jsx("div", {
+a.jsx("div", {
                                     className: "relative",
                                     children: [
                                         a.jsx("button", {
                                             style: {
-backgroundColor: "#b30000",
-transition: "all 0.3s ease",
-boxShadow: "0 0 10px #ff1a1a, 0 0 20px #ff1a1a",
-border: "1px solid #ff3333",
-marginTop: "-60px", marginLeft: "20px",
-},
+                                                backgroundColor: "#b30000",
+                                                transition: "all 0.3s ease",
+                                                boxShadow: "0 0 10px #ff1a1a, 0 0 20px #ff1a1a",
+                                                border: "1px solid #ff3333",
+                                                marginTop: "-60px", marginLeft: "20px",
+                                            },
                                             onClick: () => setShowPlanilhaMenu(!showPlanilhaMenu),
                                             children: [
                                                 a.jsx("i", {
@@ -18924,77 +18963,9 @@ marginTop: "-60px", marginLeft: "20px",
                                             )
                                         })
                                     ]
-                                }),
-                                        showMenu2 && a.jsx("div", {
-                                            style: {
-                                                position: 'absolute',
-                                                backgroundColor: "#f0f0f0",
-                                                width: "200px",
-                                                boxShadow: "0px 8px 16px 0px rgba(0,0,0,0.2)",
-                                                zIndex: "1",
-                                                borderRadius: "5px",
-                                                top: '100%',
-                                                left: '50%',
-                                                transform: 'translateX(-50%)',
-                                                marginTop: '8px'
-                                            },
-                                            children: corretoras2.map(corretora =>
-                                                a.jsx("a", {
-                                                    href: "#",
-                                                    style: {
-                                                        display: "block",
-                                                        padding: "12px 16px",
-                                                        textDecoration: "none",
-                                                        color: "black",
-                                                        fontSize: "14px",
-                                                        textAlign: "center",
-                                                        borderBottom: "1px solid #ddd"
-                                                    },
-                                                    onMouseOver: (e) => {
-                                                        e.target.style.backgroundColor = "#b31d22";
-                                                        e.target.style.color = "white";
-                                                        e.target.style.transform = "scale(1.05)";
-                                                    },
-                                                    onMouseOut: (e) => {
-                                                        e.target.style.backgroundColor = "transparent";
-                                                        e.target.style.color = "black";
-                                                        e.target.style.transform = "scale(1)";
-                                                    },
-                                                    onClick: (e) => {
-                                                        e.preventDefault();
-                                                        setSelectedBroker2(corretora);
-                                                        setShowMenu2(false);
-                                                    },
-                                                    children: corretora
-                                                })
-                                            )
-                                        })
-                                    ]
                                 })
                             ]
                         })
-                    ]
-                }),
-                a.jsx("div", {
-                    className: "space-y-3",
-                    children: s ? a.jsx($j, {
-                        onClick: n,
-                        disabled: !1
-                    }) : a.jsxs("div", {
-                        className: "bg-blue-500/10 text-blue-400 p-4 rounded-xl flex items-start space-x-3",
-                        children: [
-                            a.jsx(z0, {
-                                className: "w-5 h-5 mt-0.5 flex-shrink-0"
-                            }),
-                            a.jsx("p", {
-                                className: "text-sm",
-                                children: r("connectBrokerForSignals")
-                            })
-                        ]
-                    })
-                })
-            ]
-        })
     })
 }
 
