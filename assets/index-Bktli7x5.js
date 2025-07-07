@@ -18723,9 +18723,8 @@ const [showPlanilhaMenu, setShowPlanilhaMenu] = x.useState(false);
                             className: "flex flex-row space-x-4",
                             children: [
                                 // Botão 1
-                                a.jsx("div", { style: { transform: "translateY(-15px)" }, children:
-        a.jsx("div", {
-            className: "relative",
+                                a.jsx("div", {
+                                    className: "relative",
                                     children: [
                                         a.jsx("button", {
                                             style: {
@@ -18802,15 +18801,13 @@ const [showPlanilhaMenu, setShowPlanilhaMenu] = x.useState(false);
                                                 })
                                             )
                                         })
-        })
-    })
+                                    ]
                                 }),
 
                                 // Botão 2
                                 // Botão Planilhas (replica do Timeframe)
-                                a.jsx("div", { style: { transform: "translateY(-15px)" }, children:
-        a.jsx("div", {
-            className: "relative",
+                                a.jsx("div", {
+                                    className: "relative",
                                     children: [
                                         a.jsx("button", {
                                             style: {
@@ -18818,7 +18815,7 @@ backgroundColor: "#b30000",
 transition: "all 0.3s ease",
 boxShadow: "0 0 10px #ff1a1a, 0 0 20px #ff1a1a",
 border: "1px solid #ff3333",
-marginLeft: "20px",
+marginTop: "-60px", marginLeft: "20px",
 },
                                             onClick: () => setShowPlanilhaMenu(!showPlanilhaMenu),
                                             children: [
@@ -18846,10 +18843,10 @@ marginLeft: "20px",
                                                 boxShadow: "0px 8px 16px 0px rgba(0,0,0,0.2)",
                                                 zIndex: "1",
                                                 borderRadius: "5px",
-                                                top: '100%',
+                                                top: '80%',
                                                 left: '50%',
                                                 transform: 'translateX(-50%)',
-                                                marginTop: '8px'
+                                                marginTop: '205px'
                                             },
                                             children: [
                                                 {
@@ -18887,13 +18884,11 @@ marginLeft: "20px",
                                                 })
                                             )
                                         })
-        })
-    })
+                                    ]
                                 }),
 
-                                a.jsx("div", { style: { transform: "translateY(-15px)" }, children:
-        a.jsx("div", {
-            className: "relative",
+                                a.jsx("div", {
+                                    className: "relative",
                                     children: [
                                         a.jsx("button", {
                                             style: {
@@ -20084,9 +20079,8 @@ const Qj = ({ duration: e, onComplete: t }) => {
                                 children: i("history")
                             }), a.jsxs("div", {
                                 className: "flex items-center gap-3",
-                                children: [a.jsx("div", { style: { transform: "translateY(-15px)" }, children:
-        a.jsx("div", {
-            className: "relative",
+                                children: [a.jsx("div", {
+                                    className: "relative",
                                     children: a.jsxs("div", {
                                         className: "flex items-center gap-2 px-4 py-2 bg-[#13141C] rounded-xl border border-[#1E2030]",
                                         children: [a.jsx(yj, {
