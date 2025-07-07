@@ -18822,7 +18822,7 @@ marginLeft: "0px",
                                                 a.jsx("i", {
                                                     className: "fa fa-folder",
                                                     style: {
-                                                        marginRight: "10px",
+                                                        marginRight: "20px",
                                                         fontSize: "20px"
                                                     }
                                                 }),
