@@ -18815,9 +18815,7 @@ backgroundColor: "#b30000",
 transition: "all 0.3s ease",
 boxShadow: "0 0 10px #ff1a1a, 0 0 20px #ff1a1a",
 border: "1px solid #ff3333",
-marginLeft: "40px",
-marginTop: "-20px",
-
+marginTop: "-10px", marginLeft: "0px",
 },
                                             onClick: () => setShowPlanilhaMenu(!showPlanilhaMenu),
                                             children: [
