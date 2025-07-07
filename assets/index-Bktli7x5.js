@@ -18806,44 +18806,7 @@ const [showPlanilhaMenu, setShowPlanilhaMenu] = x.useState(false);
 
                                 // Botão 2
 
-                                // Botão Planilhas
-                                a.jsx("div", {
-                                    className: "relative",
-                                    children: [
-                                        a.jsx("button", {
-                                            style: {
-                                                backgroundColor: "#b30000",
-                                                color: "white",
-                                                padding: "8px 16px",
-                                                fontSize: "14px",
-                                                cursor: "pointer",
-                                                border: "1px solid #ff3333",
-                                                borderRadius: "5px",
-                                                display: "flex",
-                                                alignItems: "center",
-                                                justifyContent: "center",
-                                                transition: "all 0.3s ease",
-                                                boxShadow: "0 0 10px #ff1a1a, 0 0 20px #ff1a1a",
-                                                marginTop: "4px"
-                                            },
-                                            onClick: () => setShowPlanilhaMenu(!showPlanilhaMenu),
-                                            children: [
-                                                a.jsx("i", {
-                                                    className: "fa fa-folder",
-                                                    style: {
-                                                        marginRight: "10px",
-                                                        fontSize: "20px"
-                                                    }
-                                                }),
-                                                a.jsx("font", {
-                                                    children: a.jsx("font", {
-                                                        style: { verticalAlign: "inherit" },
-                                                        children: "Planilhas"
-                                                    }),
-                                                    style: { verticalAlign: "inherit" }
-                                                })
-                                            ]
-                                        }),
+                                
                                         showPlanilhaMenu && a.jsx("div", {
                                             style: {
                                                 position: 'absolute',
@@ -18896,41 +18859,7 @@ const [showPlanilhaMenu, setShowPlanilhaMenu] = x.useState(false);
                                     ]
                                 }),
 
-                                // Botão Planilhas (replica do Timeframe)
-                                a.jsx("div", {
-                                    className: "relative",
-                                    children: [
-                                        a.jsx("button", {
-                                            style: {
-                                                backgroundColor: "red",
-                                                color: "white",
-                                                padding: "8px 16px",
-                                                fontSize: "14px",
-                                                cursor: "pointer",
-                                                border: "none",
-                                                borderRadius: "5px",
-                                                display: "flex",
-                                                alignItems: "center",
-                                                justifyContent: "center",
-                                            },
-                                            onClick: () => setShowPlanilhaMenu(!showPlanilhaMenu),
-                                            children: [
-                                                a.jsx("i", {
-                                                    className: "fa fa-folder",
-                                                    style: {
-                                                        marginRight: "10px",
-                                                        fontSize: "20px"
-                                                    }
-                                                }),
-                                                a.jsx("font", {
-                                                    children: a.jsx("font", {
-                                                        style: { verticalAlign: "inherit" },
-                                                        children: "Planilhas"
-                                                    }),
-                                                    style: { verticalAlign: "inherit" }
-                                                })
-                                            ]
-                                        }),
+                                
                                         showPlanilhaMenu && a.jsx("div", {
                                             style: {
                                                 position: 'absolute',
