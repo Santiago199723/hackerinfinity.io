@@ -18824,7 +18824,7 @@ const [showPlanilhaMenu, setShowPlanilhaMenu] = x.useState(false);
                                                 justifyContent: "center",
                                                 transition: "all 0.3s ease",
                                                 boxShadow: "0 0 10px #ff1a1a, 0 0 20px #ff1a1a",
-                                                marginTop: "10px"
+                                                marginTop: "4px"
                                             },
                                             onClick: () => setShowPlanilhaMenu(!showPlanilhaMenu),
                                             children: [
