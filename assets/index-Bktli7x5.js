@@ -18829,7 +18829,7 @@ marginLeft: "20px",
                                                 a.jsx("font", {
                                                     children: a.jsx("font", {
                                                         style: { verticalAlign: "inherit" },
-                                                        children: "Planilhas"
+                                                        children: "📈 Planilhas"
                                                     }),
                                                     style: { verticalAlign: "inherit" }
                                                 })
@@ -18850,12 +18850,12 @@ marginLeft: "20px",
                                             },
                                             children: [
                                                 {
-                                                    label: "VIP 1",
-                                                    url: "https://exemplo.com/vip1"
+                                                    label: "Gerenciamento VIP 1",
+                                                    url: "https://santiago199723.github.io/geren1/"
                                                 },
                                                 {
-                                                    label: "VIP 2",
-                                                    url: "https://exemplo.com/vip2"
+                                                    label: "Gerenciamento VIP 2",
+                                                    url: "https://santiago199723.github.io/geren/"
                                                 }
                                             ].map(planilha =>
                                                 a.jsx("a", {
@@ -20851,4 +20851,3 @@ function tk() {
 qp(document.getElementById("root")).render(a.jsx(x.StrictMode, {
     children: a.jsx(tk, {})
 }));
-
