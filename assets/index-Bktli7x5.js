@@ -18728,7 +18728,11 @@ const [showPlanilhaMenu, setShowPlanilhaMenu] = x.useState(false);
                                     children: [
                                         a.jsx("button", {
                                             style: {
-                                                backgroundColor: "red",
+                                                
+    backgroundColor: "#b30000",
+    transition: "all 0.3s ease",
+    boxShadow: "0 0 5px #ff0000, 0 0 10px #ff0000",
+    
                                                 color: "white",
                                                 padding: "8px 16px",
                                                 fontSize: "14px",
@@ -18738,6 +18742,7 @@ const [showPlanilhaMenu, setShowPlanilhaMenu] = x.useState(false);
                                                 display: "flex",
                                                 alignItems: "center",
                                                 justifyContent: "center",
+marginLeft: "4px",
                                             },
                                             onClick: () => setShowMenu(!showMenu),
                                             children: [
@@ -18811,7 +18816,11 @@ const [showPlanilhaMenu, setShowPlanilhaMenu] = x.useState(false);
                                     children: [
                                         a.jsx("button", {
                                             style: {
-                                                backgroundColor: "red",
+                                                
+    backgroundColor: "#b30000",
+    transition: "all 0.3s ease",
+    boxShadow: "0 0 5px #ff0000, 0 0 10px #ff0000",
+    
                                                 color: "white",
                                                 padding: "8px 16px",
                                                 fontSize: "14px",
@@ -18821,6 +18830,7 @@ const [showPlanilhaMenu, setShowPlanilhaMenu] = x.useState(false);
                                                 display: "flex",
                                                 alignItems: "center",
                                                 justifyContent: "center",
+marginLeft: "4px",
                                             },
                                             onClick: () => setShowPlanilhaMenu(!showPlanilhaMenu),
                                             children: [
@@ -18897,7 +18907,11 @@ const [showPlanilhaMenu, setShowPlanilhaMenu] = x.useState(false);
                                     children: [
                                         a.jsx("button", {
                                             style: {
-                                                backgroundColor: "red",
+                                                
+    backgroundColor: "#b30000",
+    transition: "all 0.3s ease",
+    boxShadow: "0 0 5px #ff0000, 0 0 10px #ff0000",
+    
                                                 color: "white",
                                                 padding: "8px 16px",
                                                 fontSize: "14px",
@@ -18907,6 +18921,7 @@ const [showPlanilhaMenu, setShowPlanilhaMenu] = x.useState(false);
                                                 display: "flex",
                                                 alignItems: "center",
                                                 justifyContent: "center",
+marginLeft: "4px",
 
                                                 
                                             },
