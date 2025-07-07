@@ -18815,14 +18815,14 @@ backgroundColor: "#b30000",
 transition: "all 0.3s ease",
 boxShadow: "0 0 10px #ff1a1a, 0 0 20px #ff1a1a",
 border: "1px solid #ff3333",
-marginLeft: "0px",
+marginLeft: "20px",
 },
                                             onClick: () => setShowPlanilhaMenu(!showPlanilhaMenu),
                                             children: [
                                                 a.jsx("i", {
                                                     className: "fa fa-folder",
                                                     style: {
-                                                        marginRight: "20px",
+                                                        marginRight: "9px",
                                                         fontSize: "20px"
                                                     }
                                                 }),
