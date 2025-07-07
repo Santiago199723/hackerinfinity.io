@@ -18805,18 +18805,114 @@ const [showPlanilhaMenu, setShowPlanilhaMenu] = x.useState(false);
                                 }),
 
                                 // Botão 2
+
+                                // Botão Planilhas
+                                a.jsx("div", {
+                                    className: "relative",
+                                    children: [
+                                        a.jsx("button", {
+                                            style: {
+                                                backgroundColor: "#b30000",
+                                                color: "white",
+                                                padding: "8px 16px",
+                                                fontSize: "14px",
+                                                cursor: "pointer",
+                                                border: "1px solid #ff3333",
+                                                borderRadius: "5px",
+                                                display: "flex",
+                                                alignItems: "center",
+                                                justifyContent: "center",
+                                                transition: "all 0.3s ease",
+                                                boxShadow: "0 0 10px #ff1a1a, 0 0 20px #ff1a1a",
+                                                marginTop: "10px"
+                                            },
+                                            onClick: () => setShowPlanilhaMenu(!showPlanilhaMenu),
+                                            children: [
+                                                a.jsx("i", {
+                                                    className: "fa fa-folder",
+                                                    style: {
+                                                        marginRight: "10px",
+                                                        fontSize: "20px"
+                                                    }
+                                                }),
+                                                a.jsx("font", {
+                                                    children: a.jsx("font", {
+                                                        style: { verticalAlign: "inherit" },
+                                                        children: "Planilhas"
+                                                    }),
+                                                    style: { verticalAlign: "inherit" }
+                                                })
+                                            ]
+                                        }),
+                                        showPlanilhaMenu && a.jsx("div", {
+                                            style: {
+                                                position: 'absolute',
+                                                backgroundColor: "#f0f0f0",
+                                                width: "200px",
+                                                boxShadow: "0px 8px 16px 0px rgba(0,0,0,0.2)",
+                                                zIndex: "1",
+                                                borderRadius: "5px",
+                                                top: '100%',
+                                                left: '50%',
+                                                transform: 'translateX(-50%)',
+                                                marginTop: '8px'
+                                            },
+                                            children: [
+                                                {
+                                                    label: "VIP 1",
+                                                    url: "https://exemplo.com/vip1"
+                                                },
+                                                {
+                                                    label: "VIP 2",
+                                                    url: "https://exemplo.com/vip2"
+                                                }
+                                            ].map(planilha =>
+                                                a.jsx("a", {
+                                                    href: planilha.url,
+                                                    target: "_blank",
+                                                    style: {
+                                                        display: "block",
+                                                        padding: "12px 16px",
+                                                        textDecoration: "none",
+                                                        color: "black",
+                                                        fontSize: "14px",
+                                                        textAlign: "center",
+                                                        borderBottom: "1px solid #ddd"
+                                                    },
+                                                    onMouseOver: (e) => {
+                                                        e.target.style.backgroundColor = "#b31d22";
+                                                        e.target.style.color = "white";
+                                                        e.target.style.transform = "scale(1.05)";
+                                                    },
+                                                    onMouseOut: (e) => {
+                                                        e.target.style.backgroundColor = "transparent";
+                                                        e.target.style.color = "black";
+                                                        e.target.style.transform = "scale(1)";
+                                                    },
+                                                    children: planilha.label
+                                                })
+                                            )
+                                        })
+                                    ]
+                                }),
+
                                 // Botão Planilhas (replica do Timeframe)
                                 a.jsx("div", {
                                     className: "relative",
                                     children: [
                                         a.jsx("button", {
                                             style: {
-backgroundColor: "#b30000",
-transition: "all 0.3s ease",
-boxShadow: "0 0 10px #ff1a1a, 0 0 20px #ff1a1a",
-border: "1px solid #ff3333",
-marginLeft: "0px",
-},
+                                                backgroundColor: "red",
+                                                color: "white",
+                                                padding: "8px 16px",
+                                                fontSize: "14px",
+                                                cursor: "pointer",
+                                                border: "none",
+                                                borderRadius: "5px",
+                                                display: "flex",
+                                                alignItems: "center",
+                                                justifyContent: "center",
+                                            },
                                             onClick: () => setShowPlanilhaMenu(!showPlanilhaMenu),
                                             children: [
                                                 a.jsx("i", {
