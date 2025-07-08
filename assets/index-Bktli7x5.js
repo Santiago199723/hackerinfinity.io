@@ -18851,11 +18851,11 @@ marginLeft: "20px",
                                             children: [
                                                 {
                                                     label: "Gerenciamento VIP 1",
-                                                    url: "https://santiago199723.github.io/geren1/"
+                                                    url: "https://santiago199723.github.io/geren/"
                                                 },
                                                 {
                                                     label: "Gerenciamento VIP 2",
-                                                    url: "https://santiago199723.github.io/geren/"
+                                                    url: "https://santiago199723.github.io/geren1/"
                                                 }
                                             ].map(planilha =>
                                                 a.jsx("a", {
