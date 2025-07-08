@@ -18829,7 +18829,7 @@ marginLeft: "20px",
                                                 a.jsx("font", {
                                                     children: a.jsx("font", {
                                                         style: { verticalAlign: "inherit" },
-                                                        children: "📈 Planilhas"
+                                                        children: "📁 Planilhas"
                                                     }),
                                                     style: { verticalAlign: "inherit" }
                                                 })
