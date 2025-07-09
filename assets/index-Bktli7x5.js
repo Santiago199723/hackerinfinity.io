@@ -18694,7 +18694,7 @@ function Hj({ asset: e, onAssetSelect: t, onAnalyze: n }) {
     const [selectedBroker2, setSelectedBroker2] = x.useState(null);
 const [showPlanilhaMenu, setShowPlanilhaMenu] = x.useState(false);
 
-    const corretoras = ["Oqinex", "Investoption", "Polarium", "Casa Trader", "Olymptrader", "Iq Option", "Exnova", "Bullex", "Ebinex", "Avalon"];
+    const corretoras = ["Oqinex", "Investoption", "B2X Finance", "Polarium", "Casa Trader", "Olymptrader", "Iq Option", "Exnova", "Bullex", "Ebinex", "Avalon"];
     const corretoras2 = ["M1", "M5","5 Segundos", "30 Segundos"]; // Altere como quiser
 
     return a.jsx("div", {
