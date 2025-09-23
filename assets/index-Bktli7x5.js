@@ -18694,7 +18694,7 @@ function Hj({ asset: e, onAssetSelect: t, onAnalyze: n }) {
     const [selectedBroker2, setSelectedBroker2] = x.useState(null);
 const [showPlanilhaMenu, setShowPlanilhaMenu] = x.useState(false);
 
-    const corretoras = ["Oqinex", "Investoption", "B2X Finance", "Polarium", "Casa Trader", "Olymptrader", "Iq Option", "Exnova", "Bullex", "Ebinex", "Avalon"];
+    const corretoras = ["DELPHI CAPITAL"];
     const corretoras2 = ["M1", "M5","5 Segundos", "30 Segundos"]; // Altere como quiser
 
     return a.jsx("div", {
@@ -18751,7 +18751,7 @@ const [showPlanilhaMenu, setShowPlanilhaMenu] = x.useState(false);
                                                 a.jsx("font", {
                                                     children: a.jsx("font", {
                                                         style: { verticalAlign: "inherit" },
-                                                        children: selectedBroker ? `Sinais para a corretora ${selectedBroker}` : "Escolha sua corretora"
+                                                        children: selectedBroker ? `Sinais para a corretora ${selectedBroker}` : "Clique na corretora"
                                                     }),
                                                     style: { verticalAlign: "inherit" }
                                                 })
@@ -20851,3 +20851,4 @@ function tk() {
 qp(document.getElementById("root")).render(a.jsx(x.StrictMode, {
     children: a.jsx(tk, {})
 }));
+
